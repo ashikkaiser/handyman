@@ -1,0 +1,84 @@
+.top-part-confirm-review p {
+    font-size: 12px;
+    font-weight: 600px;
+    line-height: 18px;
+    color: #333333;
+}
+
+.logo-confirm-review {
+    display: flex;
+    align-items: center;
+}
+
+.confirm-review-image-box {
+    width: 66px;
+    height: 66px;
+    margin-right: 15px;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px;
+}
+
+.confirm-review-content a {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    color: #333333;
+}
+
+.confirm-review-content p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #333333;
+}
+
+.bottom-part-confirm-review {
+    max-width: 100%;
+    padding: 30px 25px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px;
+}
+
+.confirm-review-bottom-content p {
+    color: #666666;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 35px;
+}
+
+.button-box {
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.button-box label {
+    max-width: 100px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border: 2px solid #204746;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #204746;
+    font-size: 18px;
+    font-weight: 600;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.button-box input {
+    display: none;
+}
+
+.button-box label:hover {
+    background-color: #204746;
+    color: #fff;
+
+}

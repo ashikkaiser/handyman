@@ -1,0 +1,72 @@
+.membership-area {
+  border-bottom: 1px solid #62687a;
+}
+
+.membership-content p {
+  font-size: 14px;
+  line-height: 20px;
+  color: #204746;
+  border: 1px solid #204746;
+  padding: 4px 5px;
+  width: 180px;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.membership-content h3 {
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+.membership-content h3 span {
+  font-size: 12px;
+  line-height: 16px;
+  color: #62687a;
+}
+
+.membership-content span {
+  color: #62687a;
+  font-size: 14px;
+}
+
+.steap5-common-heading {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #204746;
+}
+
+.member-select-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.member-select-item p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #62687a;
+}
+
+.member-select-item p span {
+  color: #333333;
+  padding-left: 5px;
+}
+
+.member-total-ammount ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 14px;
+  color: #62687a;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.member-total-ammount ul li:last-child {
+  border-bottom: none;
+}

@@ -1,0 +1,10 @@
+/*
+	Plugin	: Bootstrap Alert
+	Author	: Michael Janea (www.michaeljanea.com)
+	Version	: 1.2
+*/
+ 
+.bootstrapAlertClass {padding:1em; font-size:12px;}
+.bootstrapAlertClass .alert {cursor:pointer;}
+.bootstrapAlertClass .alert:hover {border:1px solid red;}
+.bootstrapAlertClass .alert-danger {margin-bottom:0;}

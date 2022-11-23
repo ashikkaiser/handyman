@@ -1,0 +1,9 @@
+/*
+	Plugin	: Bootstrap Buttons
+	Author	: Michael Janea (www.michaeljanea.com)
+	Version	: 1.2
+*/
+
+#bootstrapButtonFieldset, #bootstrapButtonFieldset legend {text-align:center; border:1px solid #aeb3b9; -webkit-border-radius:5px; border-radius:5px;}
+#bootstrapButtonFieldset legend {padding:.3em .5em; text-align:left;}
+#bootstrapButtonFieldset .btn-block {max-width:85%; margin:auto;}

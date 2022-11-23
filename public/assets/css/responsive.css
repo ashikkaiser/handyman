@@ -1,0 +1,241 @@
+@media only screen and (max-width: 767px) {
+    .banner-content h1 {
+        font-size: 40px;
+    }
+
+    .banner-content p {
+        font-size: 16px;
+    }
+
+    .single-get-started {
+        margin: 10px auto;
+    }
+
+    .experts-item {
+        width: 220px;
+    }
+
+    .single-get-content-box p {
+        font-size: 18px;
+    }
+
+    .single-get-content-box button {
+        padding: 8px 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+    .input-box input {
+        padding-right: 70px;
+    }
+
+    .serach-box {
+        padding: 7px 15px;
+    }
+
+    /* profile page css  */
+    .single-review ul {
+        flex-direction: column;
+    }
+
+    .single-review ul li {
+        margin-bottom: 8px;
+    }
+
+    .profile-button button {
+        width: 70%;
+        margin: 0 auto;
+        padding: 6px 12px;
+        font-size: 12px;
+        margin-bottom: 10px;
+
+    }
+
+    .profile-button button img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .comment-button button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .comment-button button img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .job-text img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .job-granted button {
+        border: none;
+        outline: none;
+        padding: 8px 20px;
+        background-color: #204746;
+        color: #fff;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    /* credit page css  */
+
+    .account-details-header {
+        flex-direction: column;
+
+    }
+
+    .account-details-header h2 {
+        font-size: 20px;
+        line-height: 36px;
+    }
+
+    .account-details-content-area {
+        flex-direction: column;
+    }
+
+    .account-details-content {
+        width: 100%;
+    }
+
+    .account-details-summary-area {
+        width: 100%;
+    }
+
+    .account-details-summary-content {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 567px) {
+    .common-section-heading {
+        font-size: 26px;
+    }
+
+    .banner-img {
+        height: 420px !important;
+    }
+
+    .banner-content h1 {
+        font-size: 30px;
+    }
+
+    .banner-content p {
+        font-size: 12px;
+    }
+
+    .banner-content p a {
+        font-size: 12px;
+    }
+
+    .experts-item {
+        margin: 0 auto;
+    }
+
+    .single-get-content-box p {
+        font-size: 16px;
+    }
+
+    .single-get-content-box button {
+        padding: 6px 15px;
+    }
+
+    .top-footer {
+        text-align: center;
+    }
+
+    .footer-heading {
+        margin-top: 15px;
+    }
+
+    .single-featured-img-box {
+        height: 240px;
+    }
+
+    .single-featured {
+
+        height: 325px;
+    }
+
+    .input-box input {
+        padding-right: 30px;
+    }
+
+    .serach-box {
+        padding: 7px 10px;
+    }
+
+    .find-content button {
+        padding: 8px 20px;
+    }
+
+}
+
+@media only screen and (max-width: 490px) {
+    .banner-content {
+        left: 0%;
+    }
+
+    .input-box input {
+        padding-right: 0px;
+    }
+
+    .serach-box {
+        padding: 7px 3px;
+    }
+
+    .banner-search-wrap select {
+        padding: 5px 0px;
+    }
+
+    /* Profile page  */
+
+    .input-icon {
+        opacity: 0;
+        visibility: none;
+    }
+
+    /* electric page  */
+    .comment-content-box {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center !important;
+
+
+    }
+
+    .comment-img-box {
+        width: 230px;
+        height: 150px;
+        margin: 25px 0;
+    }
+
+    /* credit page css  */
+    .choose-amount-box span {
+        margin-bottom: 10px;
+    }
+
+    .choose-payment-box {
+        flex-direction: column;
+    }
+
+    .single-payment {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .select-payment-box input {
+
+        padding: 10px 60px;
+
+
+    }
+}

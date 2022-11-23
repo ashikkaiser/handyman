@@ -1,0 +1,21 @@
+/*
+	Plugin	: Bootstrap Tab
+	Author	: Michael Janea (www.michaeljanea.com)
+	Version	: 1.3
+*/
+
+#bootstrapTab {}
+	#bootstrapTab_Container {height:350px; overflow:auto; margin-bottom:1em;}
+	#bootstrapTab table {width:100%; border-collapse:collapse;}
+	#bootstrapTab th, #bootstrapTab td {padding:.5em;}
+	#bootstrapTab th {font-weight:bold;}
+	#bootstrapTab td {vertical-align:top;}
+	#bootstrapTab input[type=text], #bootstrapTab textarea {padding:.3em; border:1px solid #ddd; -webkit-border-radius:3px; border-radius:3px; -webkit-box-shadow:inset 0 2px 2px rgba(0,0,0,0.075); box-shadow:inset 0 2px 2px rgba(0,0,0,0.075); background:rgba(0, 0, 0, .01)}
+	#bootstrapTab input[type=text] {width:150px;}
+	#bootstrapTab textarea {resize:none; width:295px; height:100px; white-space:pre-wrap;}
+	#bootstrapTab .bootstrapTab_remove, #bootstrapTab .bootstrapTab_addNew, #bootstrapTab .bootstrapTab_up, #bootstrapTab .bootstrapTab_down {font-weight:bold; -webkit-border-radius:3px; border-radius:3px;}
+	#bootstrapTab .bootstrapTab_remove {background:#A94442; padding:.3em .5em; color:#fff;}
+	#bootstrapTab .bootstrapTab_remove:hover {text-decoration:none;}
+	#bootstrapTab .bootstrapTab_addNew, #bootstrapTab .bootstrapTab_up, #bootstrapTab .bootstrapTab_down {float:right; padding:.5em; background:#f3f3f3; border:1px solid #ddd; cursor:pointer;}
+	#bootstrapTab .bootstrapTab_addNew:hover {text-decoration:underline;}
+	#bootstrapTab .bootstrapTab_up, #bootstrapTab .bootstrapTab_down {float:none; padding:.13em .4em;}

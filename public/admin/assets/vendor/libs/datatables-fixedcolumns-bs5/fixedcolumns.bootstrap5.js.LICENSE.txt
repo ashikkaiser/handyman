@@ -1,0 +1,11 @@
+/*! Bootstrap 5 styling wrapper for FixedColumns
+ * ©2018 SpryMedia Ltd - datatables.net/license
+ */
+
+/*! DataTables Bootstrap 5 integration
+ * 2020 SpryMedia Ltd - datatables.net/license
+ */
+
+/*! FixedColumns 3.3.3
+ * ©2010-2021 SpryMedia Ltd - datatables.net/license
+ */

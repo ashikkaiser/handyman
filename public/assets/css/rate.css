@@ -1,0 +1,248 @@
+.rate {
+    max-width: 100%;
+    padding: 30px 25px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px;
+}
+
+.rate h5 {
+    color: #204746;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.single-rate {
+    margin-bottom: 30px;
+}
+
+.single-rate p {
+    font-size: 18px;
+    font-weight: 600px;
+    line-height: 24px;
+    color: #666666;
+    /* margin-bottom: 15px; */
+
+}
+
+.rate-count-box p {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rate-count-box p span {
+    font-size: 22px;
+    font-weight: 600;
+    color: #204746;
+}
+
+.counter-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid transparent;
+    width: 100%;
+    color: rgb(102, 102, 102);
+    padding: 15px 25px;
+
+    width: 235px;
+}
+
+.counter-box p {
+    white-space: pre;
+}
+
+.count-number {
+    font-family: "Open Sans", "Open Sans-fallback", Arial, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 4.1875rem;
+    letter-spacing: 0em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 49px;
+    margin: 0px;
+    padding: 0px 25px;
+    color: #898989;
+}
+
+.count-number input {
+    width: 40px;
+    border: 0px;
+    color: #898989;
+}
+
+.count-number h4 {
+    font-size: 66px;
+    font-weight: 600;
+    line-height: 70px;
+    position: relative;
+}
+
+/* .count-number h4::after{
+    position: absolute;
+    content: 'ok';
+    bottom: -55%;
+    right: 25%;
+    font-size: 16px;
+} */
+.count-number-after {
+    position: absolute;
+    bottom: -22%;
+    font-size: 14px;
+    left: 9px;
+    white-space: pre;
+}
+
+.count-number-after-x {
+    text-align: center;
+    margin: 0px;
+}
+
+.rate-select-box {
+    margin-left: 15px;
+}
+
+.rate-select-box p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #ddd;
+    margin-left: 10px;
+}
+
+.rate-select-box input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #204746;
+    border-radius: 5px;
+}
+
+.rate-select-box input[type="checkbox"]::after {
+    font-family: 'font awesome 5 free';
+    content: "\f00c";
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    text-align: center;
+}
+
+.rate-select-box input[type="checkbox"]:checked {
+    background-color: #204746;
+}
+
+.rate-select-box input[type="checkbox"]:checked::after {
+    border: 1px solid transparent;
+    display: block;
+    color: #fff;
+}
+
+.rate-next-btn {
+    border: none;
+    outline: none;
+    width: 35%;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #204746;
+    border-radius: 7px;
+}
+
+.form-heading {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.form-heading sup {
+    color: red;
+}
+
+.radio {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.radio input[type="radio"] {
+    display: none;
+}
+
+.radio span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #204746;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.radio span::after {
+
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #204746;
+    top: 50%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%) scale(0);
+    transition: .3s;
+}
+
+.radio input[type="radio"]:checked~span::after {
+
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.rate-input-box input,
+.rate-input-box textarea {
+    width: 80%;
+    margin-bottom: 20px;
+    border: 1px solid #204746;
+    border-radius: 5px;
+    padding: 15px 25px;
+    resize: none;
+}
+
+.rate-input-box input:focus,
+.rate-input-box textarea:focus {
+    outline: none;
+    box-shadow: none;
+
+}
+
+.circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #204746;
+}

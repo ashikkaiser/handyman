@@ -1,0 +1,125 @@
+.accounttab {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #204746;
+}
+
+.tab-top {
+    border-bottom: 2px solid rgb(0, 126, 180);
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: 64px;
+    background-color: rgb(255, 255, 255);
+    z-index: 100;
+}
+
+.tab-top .nav-link {
+    padding: 10px 0px;
+    background-color: transparent;
+    width: 100%;
+    color: rgb(102, 102, 102);
+    cursor: default;
+    text-decoration: none;
+}
+
+.tab-top .nav-link .image-link {
+    padding: 4px 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border-right: 1px solid rgb(204, 204, 204);
+}
+
+.image-link svg {
+    height: 20px;
+    width: 20px;
+    margin-right: 2px;
+    position: relative;
+}
+
+.image-link span {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 800px) {
+    .tab-top .nav-link .image-link {
+        flex-direction: column;
+        border: none;
+        padding: 0px;
+    }
+
+    .image-link svg {
+        height: 45px;
+        width: 45px;
+        margin: 0px 0px 5px;
+    }
+
+    .image-link span {
+        font-family: "Open Sans", "Open Sans-fallback", Arial, sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 1.125rem;
+        line-height: 1.5;
+        letter-spacing: 0em;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+.single-job {
+    border-bottom: 1px solid rgb(237, 237, 237);
+    cursor: pointer;
+    background-color: #f8f9ff;
+}
+
+.job-detials {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #214746;
+    border-radius: 5px;
+}
+
+.job-des {}
+
+.jobtext {
+    font-size: medium;
+}
+
+.status-icon i {
+    margin-bottom: 3px;
+}
+
+.image-link.active {
+    color: #204746;
+}
+
+.image-link.active svg {
+    color: #204746;
+}
+
+.tbtn {
+    background-color: #204746;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.text-small {
+    font-size: 14px;
+    line-height: normal;
+}

@@ -1,0 +1,379 @@
+/* 
+=================================
+        sidebar CSS  
+=================================
+
+*/
+.profile-guaranteed {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 15px;
+}
+
+.profile-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #204746;
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 15px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+}
+
+.profile-button button:last-child {
+    background-color: #000;
+}
+
+.profile-button button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+}
+
+.share-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+
+.share-box,
+.save-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.share-box img,
+.save-box img {
+    width: 30px;
+    margin: 0 auto;
+}
+
+.save-box,
+.share-box {
+    font-size: 14px;
+    color: #838383;
+}
+
+.sidebar-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+}
+
+.skill-area select {
+    margin-top: 10px;
+    border: none;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #204746;
+    border-radius: 10px 10px 0 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.skill-area select:focus {
+    outline: none;
+    border: none;
+}
+
+.map-wrap {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.map-wrap p {
+    font-size: 14px;
+    color: #313131;
+    font-weight: 500;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.map-wrap span {
+    font-size: 12px;
+    color: #838383;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+
+/* 
+=================================
+        gallery CSS  
+=================================
+
+*/
+
+.gallery-area {
+    display: flex;
+    align-items: center;
+}
+
+.gallery1 {
+    max-width: 450px;
+    height: 350px;
+
+}
+
+.gallery2 {
+    max-width: 320px;
+
+}
+
+.gallery2 img {
+    height: 170px;
+}
+
+.show-image {
+    position: relative;
+}
+
+.show-all-image {
+    background-color: #204746;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    width: 150px;
+    position: absolute;
+    top: -10%;
+    right: 5%;
+    transition: .5s;
+    display: hidden;
+    opacity: 0;
+}
+
+.show-image:hover .show-all-image {
+    top: 10%;
+    display: block;
+    opacity: 1;
+}
+
+/* 
+=================================
+        company info CSS  
+=================================
+
+*/
+.company-info {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 15px;
+}
+
+.company-common-heading {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #000;
+}
+
+.company-details p {
+    font-size: 14px;
+    color: #838383;
+    font-weight: 400;
+}
+
+.company-details h5 {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+/* .company-details-list{
+    display: flex;
+    align-items: center;
+} */
+.company-details-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.company-details-list ul li {
+    font-size: 13px;
+    color: #838383;
+    font-weight: 400;
+    /* border-bottom: 1px solid #838383; */
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.single-details-col {
+    padding: 10px !important;
+}
+
+
+/* 
+=================================
+      contact details CSS  
+=================================
+
+*/
+.contact-section {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.contact-section ul {
+    margin: 0;
+    padding: 0;
+}
+
+.contact-section ul li {
+    color: #313131;
+    font-size: 14px;
+    border-bottom: 1px solid #838383;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+/* 
+=================================
+      Customer CSS  
+=================================
+
+*/
+.customer-wrap {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 0px 15px;
+}
+
+.single-review {
+    padding: 15px 0;
+    border-bottom: 1px solid #838383;
+}
+
+.single-review:last-child {
+    border-bottom: none;
+}
+
+.single-review h5 {
+    font-size: 14px;
+    color: #313131;
+    font-weight: 600;
+}
+
+.verified-box img {
+    width: 20px;
+}
+
+.verified-box p {
+    margin: 0;
+    font-size: 14px;
+    color: #204746;
+    margin-left: 10px;
+}
+
+.single-review p {
+    font-size: 13px;
+    color: #838383;
+    padding-top: 10px;
+}
+
+.single-review h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #313131;
+}
+
+.single-review ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.single-review ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #838383;
+    width: 80%;
+    margin: 0 10px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.single-review ul li div {
+    font-size: 13px;
+    color: #838383;
+}
+
+.single-review ul li div:last-child {
+    color: #204746;
+    font-weight: 600;
+}
+
+/* 
+=================================
+      vetting CSS  
+=================================
+
+*/
+.vetting-status-area {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.box-vetting {
+    margin-bottom: 10px;
+}
+
+.box-vetting h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #313131;
+}
+
+.box-vetting span {
+    display: block;
+    width: 100%;
+    border: 1px solid #838383;
+    padding: 5px 10px;
+    font-size: 13px;
+    color: #838383;
+    border-radius: 5px;
+}
+
+.accordion-button:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.comment-img-box img {
+    object-fit: fill;
+    border-radius: 10px;
+}
+
+.glimg {
+    object-fit: fill;
+    width: 308px;
+    height: 120px;
+    border-radius: 10px;
+
+}

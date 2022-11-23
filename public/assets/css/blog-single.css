@@ -1,0 +1,150 @@
+.single-blog-social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.blog-social-icon-box a {
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 12px !important;
+    background-color: #204746;
+    color: #fff !important;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.blog-social-icon-box a:hover {
+    background-color: #aaa;
+}
+
+.single-blog-content h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    color: #171717;
+}
+
+.single-blog-content p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
+}
+
+.blog-img-box img {
+    border-radius: 10px;
+}
+
+.article-area h4 {
+    font-size: 18px;
+    line-height: 28px;
+    color: #333;
+}
+
+.article-area ul,
+.single-article-content ul {
+    list-style: disc;
+    margin-bottom: 25px;
+}
+
+.article-area ul li,
+.single-article-content ul li {
+    margin-left: 15px;
+}
+
+.article-area ul li a {
+    color: #003c6f !important;
+    font-size: 16px;
+    line-height: 32px;
+
+}
+
+.article-area p,
+.single-article-content p {
+    font-size: 16px;
+    color: #333;
+    line-height: 32px;
+}
+
+.article-content-view {
+    margin: 25px 0;
+}
+
+.article-content-view h3 {
+    color: #1f2937;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.single-article-content h5 {
+    font-size: 20px;
+    color: #333;
+    margin: 15px 0;
+}
+
+.single-article-content ul li,
+.single-article-content ol li {
+    font-size: 16px;
+    color: #333;
+    line-height: 32px;
+}
+
+.create-comment-content h4 {
+    font-size: 20px;
+    line-height: 28px;
+    color: #1f2937;
+    font-weight: 700;
+}
+
+.create-comment-content h6 {
+    font-size: 18px;
+    line-height: 25px;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.create-comment-content p {
+    font-size: 13px;
+    color: #555;
+}
+
+.create-comment-form input,
+.create-comment-form textarea {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 5px;
+    border: 2px solid #204746;
+    border-radius: 5px;
+}
+
+.create-comment-form input:focus,
+.create-comment-form textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.create-comment-form button {
+    margin: 15px 0;
+    padding: 10px 25px;
+    border: none;
+    background: #204746;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.comment-box-list h4 {
+    font-size: 20px;
+    line-height: 28px;
+    color: #1f2937
+}
+
+.comment-box-list p {
+    border: 1px solid #204746;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.more-content .single-slide {
+    margin-bottom: 15px;
+}

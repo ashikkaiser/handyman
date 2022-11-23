@@ -1,0 +1,278 @@
+.account-details {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+}
+
+.account-details-header {
+    border-bottom: 1px solid #aaa;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.account-details-header h2 {
+    font-size: 24px;
+    line-height: 48px;
+    color: rgba(0, 0, 0, 0.7)
+}
+
+.account-details-header h2:last-child {
+    color: red;
+}
+
+.account-details-content-area {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.account-details-content {
+    width: 58%;
+}
+
+.account-details-summary-area {
+    width: 40%;
+}
+
+.account-details-content-heding {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+}
+
+.choose-amount-area {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.choose-amount-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.choose-amount-box span {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 7px 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.active {
+    border-color: #204746 !important;
+    color: #204746;
+}
+
+.enable-area-content {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+
+}
+
+.enable-area-content p {
+    font-size: 13px;
+    text-align: left;
+}
+
+.check-box input[type="checkbox"] {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    appearance: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.check-box input[type="checkbox"]:checked {
+    background-color: #204746;
+    border-color: #204746 !important;
+}
+
+.check-box input[type="checkbox"]::after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: rgb(145, 144, 144);
+    border-radius: 50%;
+    left: 5%;
+    top: 6.5%;
+    transition: .5s;
+
+}
+
+.check-box input[type="checkbox"]:checked::after {
+    left: 55%;
+    background-color: #fff;
+}
+
+.choose-payment-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.single-payment {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    height: 130px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #aaa;
+    transition: .3s;
+}
+
+.single-payment i {
+    font-size: 40px;
+}
+
+.single-payment p {
+    font-size: 14px;
+}
+
+.pActive {
+    border-color: #204746 !important;
+    color: #204746;
+}
+
+.select-payment-box {
+    position: relative;
+}
+
+.select-payment-box input {
+
+    width: 100%;
+    padding: 10px 100px;
+    border-radius: 5px;
+    border: 1px solid #204746;
+    position: relative;
+
+
+}
+
+.select-payment-box input:focus {
+    outline: none;
+}
+
+.select-payment-box p {
+    position: absolute;
+    font-size: 14px;
+    top: 30%;
+    left: 5%;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #204746;
+}
+
+.select-payment-method a {
+    display: block;
+    font-size: 12px !important;
+    text-decoration: underline;
+    margin-top: 10px;
+    text-transform: capitalize;
+    color: #204746 !important;
+}
+
+.top-up-btn-area {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.top-up-btn-area a {
+    font-size: 14px !important;
+    text-decoration: underline;
+    margin-right: 10px;
+
+}
+
+.top-up-btn-area button {
+    border: none;
+    background-color: #204746;
+    padding: 7px 10px;
+    border-radius: 7px;
+    color: #fff;
+}
+
+.account-details-summary-content {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 20px 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.account-details-summary-content h4 {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.account-details-summary-content p {
+    font-size: 13px !important;
+}
+
+.account-details-summary-content::after {
+    position: absolute;
+    font-family: 'font awesome 5 free';
+    content: '\f02e';
+    top: -3%;
+    right: 10px;
+    font-size: 30px;
+    color: #204746;
+}
+
+.choose-amount-box input {
+    display: none;
+}
+
+.choose-amount-box label {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 7px 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.choose-amount-box input:checked+label {
+    border-color: #204746 !important;
+    color: #204746;
+}
+
+.card-option input {
+    /* display: none; */
+    opacity: 0;
+}
+
+.card-option input:checked+.single-payment {
+    border-color: #204746 !important;
+    color: #204746;
+}
+
+.InputContainer {
+    border: 1px solid #204746;
+    border-radius: 4px;
+}

@@ -1,0 +1,20 @@
+/*
+	Plugin	: Bootstrap Breadcrumbs
+	Author	: Michael Janea (www.michaeljanea.com)
+	Version	: 1.2
+*/
+#bootstrapBreadcrumbs {}
+	#bootstrapBreadcrumbs_Container {height:350px; overflow:auto; margin-bottom:1em;}
+	#bootstrapBreadcrumbs table {width:100%; border-collapse:collapse;}
+	#bootstrapBreadcrumbs th, #bootstrapBreadcrumbs td {padding:.5em;}
+	#bootstrapBreadcrumbs th {font-weight:bold;}
+	#bootstrapBreadcrumbs td {vertical-align:top;}
+	#bootstrapBreadcrumbs input[type=text], #bootstrapBreadcrumbs textarea {padding:.3em; border:1px solid #ddd; -webkit-border-radius:3px; border-radius:3px; -webkit-box-shadow:inset 0 2px 2px rgba(0,0,0,0.075); box-shadow:inset 0 2px 2px rgba(0,0,0,0.075); background:rgba(0, 0, 0, .01)}
+	#bootstrapBreadcrumbs input[type=text] {width:150px;}
+	#bootstrapBreadcrumbs textarea {resize:none; width:295px; height:100px;}
+	#bootstrapBreadcrumbs .bootstrapBreadcrumbs_remove, #bootstrapBreadcrumbs .bootstrapBreadcrumbs_addNew, #bootstrapBreadcrumbs .bootstrapBreadcrumbs_up, #bootstrapBreadcrumbs .bootstrapBreadcrumbs_down {font-weight:bold; -webkit-border-radius:3px; border-radius:3px;}
+	#bootstrapBreadcrumbs .bootstrapBreadcrumbs_remove {background:#A94442; padding:.3em .5em; color:#fff;}
+	#bootstrapBreadcrumbs .bootstrapBreadcrumbs_remove:hover {text-decoration:none;}
+	#bootstrapBreadcrumbs .bootstrapBreadcrumbs_addNew, #bootstrapBreadcrumbs .bootstrapBreadcrumbs_up, #bootstrapBreadcrumbs .bootstrapBreadcrumbs_down {float:right; padding:.5em; background:#f3f3f3; border:1px solid #ddd;}
+	#bootstrapBreadcrumbs .bootstrapBreadcrumbs_addNew:hover {text-decoration:underline;}
+	#bootstrapBreadcrumbs .bootstrapBreadcrumbs_up, #bootstrapBreadcrumbs .bootstrapBreadcrumbs_down {float:none; padding:.13em .4em;}

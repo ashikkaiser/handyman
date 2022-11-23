@@ -1,0 +1,815 @@
+/* membership options */
+#membership {
+    margin: 0px auto;
+    padding: 64px 0px;
+}
+
+#membership #bar {
+    background: url('/assets/images/overlay_bg.png') center 26px no-repeat;
+    background-size: 2000px auto;
+}
+
+#membership .wrapper2 {
+    margin: 0px auto 40px auto;
+    max-width: 980px;
+    padding: 0 24px;
+}
+
+#membership .wrapper2 img {
+    max-width: 510px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: block;
+}
+
+#membership .wrapper {
+    max-width: 980px;
+    position: relative;
+    display: flex;
+}
+
+#membership .wrapper #overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+#membership h2 {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0px 20px 24px 20px;
+    text-align: center;
+    color: #0058A2;
+}
+
+#membership .column {
+    margin-right: 16px;
+    display: flex;
+    flex: 1;
+}
+
+#membership .column.affiliate .inner {
+    background: url('/assets/images/affiliate_bg.png') center top repeat-x;
+    margin-top: 108px;
+}
+
+#membership .column.affiliate .inner .title {
+    padding: 48px 0px 12px 0px;
+}
+
+#membership .column.lite .inner {
+    background: url('/assets/images/lite_bg.png') center top repeat-x;
+    margin-top: 78px;
+}
+
+#membership .column.lite .inner .title {
+    padding: 58px 0px 12px 0px;
+}
+
+#membership .column.standard .inner {
+    background: #101D41 url('/assets/images/standard_bg.png') center top repeat-x;
+    margin-top: 60px;
+    border: solid 1px #0058A2
+}
+
+#membership .column.standard .inner .title {
+    /* background: url('https://storage.pardot.com/796483/1631793577k1yH0RzO/most_popular.png') no-repeat right 76px; */
+    background-size: 90px 28px;
+    color: #fff;
+    padding: 76px 0px 12px 0px;
+}
+
+#membership .column.pro {
+    margin-right: 0px;
+}
+
+#membership .column.pro .inner {
+    margin-right: 0px;
+    background: url('/assets/images/pro_bg.png') center top repeat-x;
+    margin-top: 30px;
+}
+
+#membership .column.pro .inner .title {
+    padding: 106px 0px 12px 0px;
+}
+
+#membership .column .inner {
+    padding: 16px 16px 24px 16px;
+    border: solid 1px #80ACD1;
+    border-radius: 0px 0px 8px 8px;
+    margin-top: auto;
+}
+
+#membership .column .title {
+    font-size: 22px;
+    line-height: 28px;
+    color: #0058A2;
+    font-weight: 600;
+}
+
+#membership .column.standard li {
+    color: #fff;
+    background-image: url('/assets/images/tick_light.png');
+}
+
+#membership ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#membership li {
+    list-style-type: none;
+    background: url('/assets/images/tick.png') no-repeat left 4px;
+    background-size: 16px 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    padding: 0px 0px 20px 24px;
+}
+
+#membership #footnote {
+    margin: 0px auto;
+    max-width: 600px;
+    padding: 24px 24px 0px 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#membership .column a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    border: solid 2px #0058A2;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #0058A2;
+    text-decoration: none;
+}
+
+#membership .column.standard a {
+    border: solid 2px #D10A38;
+    color: #fff;
+    background: #D10A38;
+    margin: auto 16px 24px 16px;
+    /* position: absolute; */
+}
+
+#membership .column a img {
+    max-width: 20px;
+    padding-right: 8px;
+}
+
+#membership .column a:hover {
+    opacity: 0.7;
+}
+
+
+#content {
+    background: url('/storage/photos/1/handy.png') center top no-repeat;
+    min-height: 430px;
+}
+
+
+
+#content .wrapper {
+    display: flex;
+    x-justify-content: space-around;
+    x-align-items: stretch;
+}
+
+
+
+
+body .wrapper {
+    margin: 0px auto;
+    max-width: 980px;
+    /* padding: 0 24px; */
+}
+
+#content #hero {
+    flex: 0 1 664px;
+    padding-top: 40px;
+}
+
+#content #form-container {
+    width: 230px;
+    flex: 0 0 316px;
+    padding-top: 110px;
+}
+
+#contact-form {
+    background: #fff;
+    padding: 24px 16px 24px 16px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 35%);
+    font-size: 16px;
+    line-height: 24px;
+}
+
+#contact-form .title {
+    font-size: 24px;
+    line-height: 32px;
+    color: #333333;
+    font-weight: 600;
+    padding-bottom: 16px;
+}
+
+#contact-form .subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+    font-weight: 400;
+    padding-bottom: 8px;
+}
+
+#contact-form .form-field {
+    text-align: left;
+    position: relative;
+    margin-bottom: 16px;
+    width: 100%;
+    display: block;
+    margin-bottom: 16px;
+}
+
+#contact-form input[type=submit] {
+    background-color: #224746;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    height: 50px;
+    border: 0;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    -webkit-appearance: none;
+    margin: 16px 0px 0px auto;
+}
+
+#contact-form #privacy-notice {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 24px;
+}
+
+#contact-form #privacy-notice a {
+    color: #005F87;
+    text-decoration: none;
+}
+
+#benefits {
+    margin: 48px auto 48px auto;
+}
+
+#benefits .wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+
+#benefits .column {
+    width: 33%;
+}
+
+#benefits .column .inner {
+    padding: 0px 24px;
+}
+
+#benefits .column .title {
+    font-size: 23px;
+    line-height: 26px;
+    font-weight: 600;
+    padding: 2px 0px 24px 0px;
+    color: #214746;
+}
+
+#leads {
+    background-color: #214746;
+    padding: 64px 0px;
+}
+
+#price {
+
+    padding: 64px 0px;
+}
+
+
+
+#leads h2 {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0px 20px 16px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+#leads p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: center;
+    /* padding-bottom: 48px; */
+    color: #fff;
+}
+
+#leads #search-box {
+    margin: 0px auto;
+    max-width: 700px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 6px;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 35%);
+}
+
+@media only screen and (max-width: 1023px) {
+    #content .wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #content #hero {
+        flex: 1;
+        width: 80%;
+        padding-top: 40px;
+    }
+
+    #content #form-container {
+        flex: 1;
+        width: 80%;
+        padding-top: 20px !important;
+    }
+
+    #contact-form {
+        min-height: auto;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    #benefits .wrapper {
+        display: block;
+        padding: 0px 16px;
+    }
+
+    #benefits .column {
+        width: 100%;
+    }
+
+    #benefits .column .inner {
+        padding: 0px 0px 48px 0px;
+    }
+
+    #benefits .column .title {
+        padding: 2px 0px 16px 0px;
+    }
+}
+
+.testimonialImage {
+    width: 200px;
+    height: 200px;
+
+}
+
+.testimonialtext {
+    text-align: left !important;
+    color: black !important
+}
+
+.carousel-indicators {
+    bottom: -52px !important;
+}
+
+.card-item-list ul li::before {
+    position: absolute;
+    font-family: 'font awesome 5 free';
+    content: '\f058';
+    left: -35px;
+    color: #204746;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.card-item-list ul li {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 24px;
+    padding-bottom: 15px;
+    /* margin-left: 35px; */
+    position: relative;
+}
+
+.price-card:hover {
+    transform: scale(1.02, 1.02);
+    -webkit-transform: scale(1.02, 1.02);
+    backface-visibility: hidden;
+    will-change: transform;
+    box-shadow: 0 1rem 3rem rgb(185 185 185 / 75%) !important;
+}
+
+.card-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    margin: auto 16px 24px 16px;
+    border: solid 2px #204746;
+    color: #fff !important;
+    background: #204746;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-height-fixed {
+    display: flex !important;
+    align-items: stretch !important;
+}
+
+#price .card {
+    border: 1px solid #aaa;
+    padding: 10px;
+}
+
+#price .card-body {
+    display: flex !important;
+    flex-direction: column;
+}
+
+#faq {
+    margin: 0px auto;
+    background-color: white !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#faq .title {
+    text-align: center;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    padding-bottom: 24px;
+}
+
+
+
+#membership {
+    margin: 0px auto;
+    padding: 64px 0px;
+}
+
+#membership #bar {
+    background: url(/assets/images/overlay_bg.png) center 26px no-repeat;
+    background-size: 2000px auto;
+}
+
+#membership .wrapper {
+    max-width: 980px;
+    position: relative;
+    display: flex;
+}
+
+#membership .wrapper #overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+#membership .column {
+    margin-right: 16px;
+    display: flex;
+    flex: 1;
+}
+
+#membership .column.affiliate .inner {
+    background: url(/assets/images/affiliate_bg.png) center top repeat-x;
+    margin-top: 100px;
+}
+
+#membership .column .inner {
+    padding: 16px 16px 24px 16px;
+    border: solid 1px #80ACD1;
+    border-radius: 0px 0px 8px 8px;
+    margin-top: auto;
+}
+
+#membership .column.affiliate .inner .title {
+    padding: 48px 0px 12px 0px;
+}
+
+#membership .column .title {
+    font-size: 22px;
+    line-height: 28px;
+    color: #0058A2;
+    font-weight: 600;
+}
+
+#membership ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#membership .column a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    border: solid 2px #0058A2;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #0058A2;
+    text-decoration: none;
+}
+
+#subtle_bg {
+    background: linear-gradient(163.37deg, #FFFFFF 16.14%, #F8F7F4 60%);
+}
+
+#membership .wrapper2 {
+    margin: 0px auto 40px auto;
+    max-width: 950px;
+    padding: 0 24px;
+}
+
+#membership h2 {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0px 20px 24px 20px;
+    text-align: center;
+    color: #0058A2;
+}
+
+img {
+    max-width: 100%;
+}
+
+#membership .wrapper2 img {
+    max-width: 510px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: block;
+}
+
+#membership .column.lite .inner {
+    background: url(/assets/images/pro_bg.png) center top repeat-x;
+    margin-top: 73px;
+    padding-top: 34px;
+}
+
+#membership .column.standard .inner {
+    background: #101D41 url(/assets/images/standard_bg.png) center top repeat-x;
+    margin-top: 42px;
+    border: solid 1px #0058A2;
+    padding-top: 48px;
+    color: #F8F7F4 !important;
+}
+
+#membership .column.pro .inner {
+    margin-right: 0px;
+    background: url(/assets/images/pro_bg.png) center top repeat-x;
+    margin-top: 30px;
+}
+
+#membership .column.standard li {
+    color: #fff;
+    background-image: url(/assets/images/tick_light.png);
+}
+
+#membership li {
+    list-style-type: none;
+    background: url(/assets/images/tick.png) no-repeat left 4px;
+    background-size: 16px 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    padding: 0px 0px 20px 24px;
+}
+
+@media only screen and (max-width:1023px) {
+    #membership {
+        padding: 48px 0px;
+    }
+
+    #membership #bar {
+        background: none;
+    }
+
+    #membership .wrapper2 {
+        margin-bottom: 24px;
+    }
+
+    #membership .wrapper2 img {
+        max-width: 260px;
+    }
+
+    #membership .wrapper {
+        flex-direction: column;
+        padding: 0px 24px;
+        width: 80%;
+    }
+
+    #membership .wrapper #overlay {
+        display: none;
+    }
+
+    #membership .column {
+        margin-right: 0;
+    }
+
+    #membership .column .inner {
+        padding: 0px 16px 0px 16px;
+        border: none;
+        border-radius: 0px 8px 8px 0px;
+        margin-top: 0;
+        width: 100%;
+    }
+
+    #membership .column.affiliate .inner {
+        background: url('/assets/images/f.png') left top no-repeat;
+        background-size: 100px auto;
+        margin-top: 0px;
+        padding-left: 106px;
+        padding-bottom: 20px;
+    }
+
+    #membership .column.affiliate .inner .title {
+        padding: 26px 0px 12px 0px;
+    }
+
+    #membership .column.lite .inner {
+        background: url('https://storage.pardot.com/796483/1631793576PVsTq6fe/lite_bg_tablet.png') left top no-repeat;
+        background-size: 100px auto;
+        margin-top: 0px;
+        padding-left: 106px;
+        padding-bottom: 45px;
+    }
+
+    #membership .column.lite .inner .title {
+        padding: 26px 0px 12px 0px;
+    }
+
+    #membership .column.standard {
+        background: url('https://storage.pardot.com/796483/1631793578AkytQSCr/standard_bg_content_mobile.png') left top repeat-y;
+        border-radius: 0px 8px 8px 0px;
+    }
+
+    #membership .column.standard .inner {
+        background: url('https://storage.pardot.com/796483/16317935767Jj9QPSh/standard_bg_tablet.png') left top no-repeat;
+        background-size: 100px auto;
+        margin-top: 0px;
+        padding-left: 106px;
+        padding-bottom: 24px;
+        border: none;
+    }
+
+    #membership .column.standard .inner .title {
+        padding: 30px 0px 12px 0px;
+        background: url('https://storage.pardot.com/796483/1631793577k1yH0RzO/most_popular.png') no-repeat right 30px;
+        background-size: 90px 28px;
+        color: #fff;
+    }
+
+    #membership .column.pro .inner {
+        background: url('https://storage.pardot.com/796483/1631793577egLCeGsZ/pro_bg_tablet.png') left top no-repeat;
+        background-size: 100px auto;
+        margin-top: 0px;
+        padding-left: 106px;
+        padding-top: 24px;
+        padding-bottom: 25px;
+    }
+
+    #membership .column.pro .inner .title {
+        padding: 26px 0px 12px 0px;
+    }
+
+    #membership ul {
+        padding-bottom: 12px;
+    }
+
+    #membership li {
+        padding: 0px 0px 10px 24px;
+        background-position: left 2px;
+    }
+
+    #membership .column a {
+        width: auto;
+        max-width: 192px;
+        padding: 10px 12px;
+    }
+
+
+
+}
+
+
+
+@media only screen and (max-width: 599px) {
+    #membership .wrapper {
+        width: auto;
+        padding: 0px 16px 0px 4px;
+    }
+
+    #membership .wrapper2 img {
+        max-width: 260px;
+        margin-bottom: 48px;
+    }
+
+    #membership h2 {
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+    #membership li {
+        padding: 0px 0px 20px 24px;
+    }
+
+    #membership ul {
+        padding-bottom: 4px;
+    }
+
+    #membership .column .inner {
+        padding: 0px 0px 0px 16px
+    }
+
+    #membership .column.affiliate .inner {
+        background: url('/assets/images/f.png') left top no-repeat;
+        background-size: 55px auto;
+        margin-top: 0px;
+        padding-left: 80px;
+        padding-bottom: 20px;
+    }
+
+    #membership .column.affiliate .inner .title {
+        padding: 20px 0px 12px 0px;
+    }
+
+    #membership .column.lite .inner {
+        background: url('/assets/images/e.png') left top no-repeat;
+        background-size: 55px auto;
+        margin-top: 0px;
+        padding-left: 80px;
+        padding-bottom: 48px;
+    }
+
+    #membership .column.lite .inner .title {
+        padding: 22px 0px 12px 0px;
+    }
+
+    #membership .column.standard .inner {
+        background: url('/assets/images/p.png') left top no-repeat;
+        background-size: 55px auto;
+        margin-top: 0px;
+        padding-left: 80px;
+        padding-bottom: 24px;
+        padding-right: 12px;
+    }
+
+    #membership .column.standard .inner .title {
+        padding: 34px 0px 12px 0px;
+        background-position: right 34px;
+    }
+
+    #membership .column.pro .inner {
+        background: url('https://storage.pardot.com/796483/1631793577qedTworT/pro_bg_mobile.png') left top no-repeat;
+        background-size: 85px auto;
+        margin-top: 0px;
+        padding-left: 80px;
+        padding-bottom: 24px;
+    }
+
+    #membership .column.pro .inner .title {
+        padding: 18px 0px 12px 0px;
+    }
+
+    #membership .column a {
+        width: auto;
+        max-width: 400px;
+        padding: 10px 12px;
+    }
+}

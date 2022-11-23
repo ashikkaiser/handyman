@@ -1,0 +1,214 @@
+.benefits-banner-area {
+  background-image: url('../images/benefits/banner.jpg');
+  padding-top: 120px;
+  padding-bottom: 30px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 999;
+}
+
+.benefits-banner-area::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  z-index: -1;
+  opacity: .3;
+}
+
+.benefits-banner-content h2 {
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 600;
+
+}
+
+.benefits-banner-icon {
+  padding-top: 80px;
+
+}
+
+.benefits-banner-icon i {
+  color: #fff !important;
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transform: rotate(-90deg);
+  cursor: pointer;
+  animation: bounce 2s 2s infinite;
+  transform: all .2s ease-in;
+
+}
+
+@keyframes bounce {
+
+  20%,
+  50%,
+  80%,
+  to {
+    transform: translateY(0) rotate(-90deg);
+  }
+
+  40% {
+    transform: translateY(-30px) rotate(-90deg);
+  }
+
+  70% {
+    transform: translateY(-15px) rotate(-90deg);
+  }
+
+  90% {
+    transform: translateY(-4px) rotate(-90deg);
+  }
+}
+
+.benefits-search-area {
+  background-color: #E5E7EB;
+  padding: 30px 20px;
+}
+
+.benefits-search-box {
+  box-shadow: 0 1rem 3rem rgba(185, 185, 185, 0.75) !important;
+
+}
+
+.benefits-search-box input {
+  padding: 10px 20px;
+  border: none;
+}
+
+.benefits-search-box input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.benefits-search-box input::placeholder {
+  color: #4b5563;
+  font-size: 14px;
+
+}
+
+.benefits-search-box button {
+  padding: 0px 80px;
+  border: none;
+  background-color: #204746;
+  color: #fff;
+}
+
+
+/* swiper css  */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  background: #fff;
+
+
+}
+
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.swiper-img-box {
+  height: 180px;
+}
+
+.swiper-content {
+  border: 2px solid #204746;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+.swiper-content-trade-box {
+  box-sizing: border-box;
+}
+
+.swiper-content-trade-box a {
+  display: inline-block;
+  padding: 5px 15px;
+  background: #204746;
+  border-radius: 25px 25px 25px 25px;
+  font-size: 12px !important;
+  color: #fff !important;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.swiper-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #204746;
+  margin: 10px 0;
+}
+
+.swiper-content p {
+  margin-top: 10px;
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 18px;
+  color: #374151 !important;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.continue-btn {
+  display: block;
+  padding-top: 80px;
+  font-size: 16px !important;
+  line-height: 24px;
+  color: #204746 !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #204746;
+  opacity: .7;
+
+
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #204746;
+  opacity: 1;
+}
+
+@media only screen and (max-width: 567px) {
+  .benefits-search-box button {
+    padding: 0 40px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .benefits-search-box button {
+    padding: 0 15px;
+  }
+
+}
