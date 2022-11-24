@@ -104,8 +104,11 @@
                             <div class="map-wrap">
                                 <div id="map"></div>
 
-                                <p>{{ $company->business_name }}</p>
-                                <span>Operates in this area - 4 miles away</span>
+                                <p class="pt-2">{{ ucfirst($company->business_name) }}</p>
+                                @if ($distance)
+                                    <span>Operates in this area - {{ number_format((float) $distance, 2, '.', '') }}
+                                        miles away</span>
+                                @endif
                             </div>
                         </div>
                     @endif

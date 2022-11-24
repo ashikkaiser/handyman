@@ -560,14 +560,14 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="text-black">Search A company</span>
+                    <span class="text-black">Search a TradExpert</span>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                     <div class="review-form">
                         <div class=" mb-3">
-                            <select class="form-control select2" name="company" id="company"> </select>
+                            <select class="form-control select2-company" name="company" id="company"> </select>
                         </div>
 
 
@@ -586,8 +586,8 @@
 
 
 @section('js')
-    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- <script>
         $(document).ready(function() {
             $('.experts-carousel').slick({
                 infinite: true,
@@ -598,8 +598,11 @@
     </script> --}}
 
     <script>
-        $('.select2').select2({
-            placeholder: 'Select Company',
+        function click(e) {
+            console.log('ok');
+        }
+        $('.select2-company').select2({
+            placeholder: 'Select a Company',
             dropdownParent: $('#companySearchModal'),
             ajax: {
                 url: "{{ route('ajaxCompany') }}",
