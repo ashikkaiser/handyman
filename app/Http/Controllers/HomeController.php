@@ -88,13 +88,10 @@ class HomeController extends Controller
         $companies->where('is_active', true);
         $companies->whereJsonContains('business_category', "$category->id");
         $companies->whereJsonContains('business_subcategory', "$subcats->id");
+
         isset($session->location) ? $companies->where('post_code', $session->location) : '';
-        if (isset($session->lat) && isset($session->lng)) {
-            $companies->distance($session->lat, $session->lng);
-        } else {
-            $geoCode =  Geocoder::getCoordinatesForAddress($request->location);
-            $companies->distance($geoCode['lat'], $geoCode['lng']);
-        }
+        $geoCode =  Geocoder::getCoordinatesForAddress($request->location);
+        $companies->distance($geoCode['lat'], $geoCode['lng']);
 
 
 
