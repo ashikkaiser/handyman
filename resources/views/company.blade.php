@@ -55,6 +55,12 @@
                             <div class="comment-content">
                                 <h5>{{ $company->business_name }}</h5>
                                 @php
+                                    $url = url()->previous();
+                                    $route = app('router')
+                                        ->getRoutes($url)
+                                        ->match(app('request')->create($url))
+                                        ->getName();
+                                    
                                     if (session()->has('search')) {
                                         $search = (object) session()->get('search');
                                         $c = \App\Models\CompanyProfile::where('id', $company->id)
@@ -66,10 +72,14 @@
                                         $distance = null;
                                     }
                                 @endphp
-                                @if ($distance)
-                                    <h6>Operates in this area - {{ number_format((float) $distance, 2, '.', '') }}
-                                        miles away</h6>
+
+                                @if ($route === 'search')
+                                    @if ($distance)
+                                        <h6>Operates in this area - {{ number_format((float) $distance, 2, '.', '') }}
+                                            miles away</h6>
+                                    @endif
                                 @endif
+
 
                                 <p class="reviews">
                                     {{ $company->reviews->count() }} <span>({{ $company->reviews->count() }} reviews)</span>
@@ -105,9 +115,11 @@
                                 <div id="map"></div>
 
                                 <p class="pt-2">{{ ucfirst($company->business_name) }}</p>
-                                @if ($distance)
-                                    <span>Operates in this area - {{ number_format((float) $distance, 2, '.', '') }}
-                                        miles away</span>
+                                @if ($route === 'search')
+                                    @if ($distance)
+                                        <span>Operates in this area - {{ number_format((float) $distance, 2, '.', '') }}
+                                            miles away</span>
+                                    @endif
                                 @endif
                             </div>
                         </div>
