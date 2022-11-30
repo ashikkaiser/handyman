@@ -31,9 +31,10 @@
     <form action="" class="skill-form mt-4" method="POST">
         @csrf
         <div id="form-body">
-            <h6 class="badge bg-secondary fst-italic p-3"> If you wants to add more skills, please go to your account setting
-                and
-                add more category.
+            <h6 class="badge bg-secondary fst-italic p-3"> If you want to add more skills, please go to your <a
+                    class="text-white" href="{{ route('tasker.account') }}" style="font-weight: 400"> Account
+                    details</a>
+                and add more categories.</h6>
             </h6>
             <h5>Current Skills ({{ count(json_decode($company->business_subcategory)) }})</h5>
             <ul>
