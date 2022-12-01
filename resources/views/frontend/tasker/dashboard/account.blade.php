@@ -194,7 +194,7 @@
 
                 <div class="col-md-12">
                     <label for="logo" class="form-label">Upload your business logo</label>
-                    <div id="logo" class="row"></div>
+                    <div id="logo" class="row" style="width: 100%"></div>
                 </div>
                 @if ($package->images_limit)
                     <div class="row mb-3">
@@ -253,13 +253,13 @@
             fieldName: 'logo', // this configuration will send your images named "fileUpload" to the server
             maxCount: 1,
             rowHeight: '200px',
-            groupClassName: 'col-md-12',
+            groupClassName: 'col-4',
             maxFileSize: '',
             dropFileLabel: "Drop Here",
             placeholderImage: {
                 image: '/{{ $company->logo }}',
                 width: '100%',
-                height: '100%'
+                // height: '200px'
             },
 
 
