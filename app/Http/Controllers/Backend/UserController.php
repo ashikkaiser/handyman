@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\CompanyDataTable;
 use App\DataTables\UserDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\AppliedJob;
 use App\Models\Category;
 use App\Models\CompanyProfile;
+use App\Models\Jobs;
 use App\Models\Package;
+use App\Models\Review;
+use App\Models\SavedJob;
+use App\Models\Subscriptions;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -130,5 +136,30 @@ class UserController extends Controller
             dispatch(new \App\Jobs\RegistrationNotification($user, $userMail));
         }
         return back();
+    }
+
+    public function companyDelete($id)
+    {
+
+        $company = CompanyProfile::find($id);
+        User::find($company->user_id)->delete();
+        Jobs::where('company_id', $company->id)->delete();
+        Review::where('company_id', $company->id)->delete();
+        Subscriptions::where('company_id', $company->id)->delete();
+        Transaction::where('company_id', $company->id)->delete();
+        AppliedJob::where('company_id', $company->id)->delete();
+        $company->delete();
+        return back()->with('success', 'Company Deleted Successfully');
+    }
+
+    public function userDelete($id)
+    {
+        $user = User::find($id);
+        AppliedJob::where('user_id', $user->id)->delete();
+        Jobs::where('user_id', $user->id)->delete();
+        Review::where('user_id', $user->id)->delete();
+        SavedJob::where('user_id', $user->id)->delete();
+        $user->delete();
+        return back()->with('success', 'User Deleted Successfully');
     }
 }

@@ -20,16 +20,24 @@ class UserDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query->where('role', 'user'))
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
                 $action = '<div class="btn-group  m-r-10">
                     <a href="' . route('admin.users.edit', $row->id) . '"><i class="fa fa-edit"></i>   </a>
+              </div>
+              <a href="' . route('admin.users.delete', $row->id) . '" class="mx-2 text-danger"><i class="fa fa-trash"></i>   </a>
               </div>';
                 return $action;
             })
-            ->rawColumns(['action']);
+            ->editColumn('updated_at', function ($row) {
+                return $row->updated_at->diffForHumans();
+            })
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at->diffForHumans();
+            })
+            ->rawColumns(['action', 'updated_at', 'created_at']);
     }
 
     /**

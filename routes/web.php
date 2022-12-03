@@ -78,6 +78,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'IsSuperAdm
     Route::any('company/update/{id}', [UserController::class, 'company_update'])->name('company.update');
     Route::get('company/show/{id}', [UserController::class, 'company_show'])->name('company.show');
     Route::get('company/approved/{id}', [UserController::class, 'compnayApprove'])->name('company.approved');
+    Route::get('company/delete/{id}', [UserController::class, 'companyDelete'])->name('company.delete');
+
 
 
 
@@ -88,6 +90,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'IsSuperAdm
     Route::any('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::any('users/update/{id}', [UserController::class, 'update'])->name('users.update');
     Route::get('users/show/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('users/delete/{id}', [UserController::class, 'userDelete'])->name('users.delete');
 
 
     Route::get('testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');

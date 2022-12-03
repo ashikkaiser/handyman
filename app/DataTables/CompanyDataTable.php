@@ -23,17 +23,18 @@ class CompanyDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
-          
+
                 $action = '<div class="btn-group  m-r-10">
                 <a href="' . route('admin.company.show', $row->id) . '" class="mx-2"><i class="fa fa-search"></i> </a>
-                <a href="' . route('admin.company.edit', $row->id) . '"><i class="fa fa-edit"></i>   </a>
+                <a href="' . route('admin.company.edit', $row->id) . '" class="mx-2"><i class="fa fa-edit"></i> </a>
+                <a href="' . route('admin.company.delete', $row->id) . '" class="mx-2 text-danger"><i class="fa fa-trash"></i>   </a>
               </div>';
                 return $action;
             })
-            
-            
+
+
             ->rawColumns(['action']);
-           // ->addColumn('action', 'company.action');
+        // ->addColumn('action', 'company.action');
     }
 
     /**
