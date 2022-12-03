@@ -172,9 +172,48 @@ class UserController extends Controller
                 $job->post_code = $request->post_code;
                 $job->status = "approved";
                 $job->save();
+                $data = [
+                    'user' => $user,
+                    'myself' => true,
+                    'job' => $job,
+                    'subject' => 'Your job has been posted.',
+                    'title' => 'Your job has been posted',
+                    'body' => "Your job has been posted successfully. You can view your job details by clicking the button below.",
+                ];
+
+                SendEmailJob::dispatch($data);
+
+                if (!$job->company_id) {
+                    $getmatchedCompanies =
+                        CompanyProfile::whereJsonContains('business_category', $job->category_id)
+                        ->whereJsonContains('business_subcategory', $job->subcategory_id)->get();
+
+                    foreach ($getmatchedCompanies as $company) {
+                        $data = [
+                            'user' => $user,
+                            'myself' => false,
+                            'subject' => 'A job matching your category has been posted. ',
+                            'title' => 'A job matching your category has been posted',
+                            'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                        ];
+                        SendEmailJob::dispatch($data);
+                    }
+                } else {
+                    $company = CompanyProfile::find($job->company_id);
+                    $data = [
+                        'user' => User::find($company->user_id),
+                        'myself' => false,
+                        'subject' => 'A job matching your category has been posted. ',
+                        'title' => 'A job matching your category has been posted',
+                        'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                    ];
+                    SendEmailJob::dispatch($data);
+                }
                 return redirect()->route('login')->with('success', 'Job Posted Successfully Please Login to view your job');
             }
         }
+
+
 
         $company = CompanyProfile::find($request->company);
 

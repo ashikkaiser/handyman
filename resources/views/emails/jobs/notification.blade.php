@@ -30,3 +30,14 @@
         ])
     @endsection
 @endif
+
+@if (isset($details['myself']))
+    @section('mailBody')
+        @include('emails.layouts.jobnotify', [
+            'name' => $details['user']->name,
+            'bodyCompany' => $details['body'],
+            'link' => route('login'),
+            'linkText' => 'Login',
+        ])
+    @endsection
+@endif

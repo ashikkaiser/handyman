@@ -393,7 +393,6 @@ class DashboardController extends Controller
             return response()->json([
                 'success' => 'You have insufficient credits to apply for this job',
                 'title' => 'Insufficient Credits',
-
             ]);
         }
         $appliedJob = new AppliedJob();
@@ -412,7 +411,6 @@ class DashboardController extends Controller
             'company' => auth()->user()->company,
             'subject' => 'New Proposal for your Job ',
             'title' => 'A TradExpert is interested in your job ',
-            // 'cover_letter' => $request->cover_letter,
         ];
 
         SendEmailJob::dispatch($data);
