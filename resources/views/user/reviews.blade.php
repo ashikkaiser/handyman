@@ -102,12 +102,12 @@
                                 <div class="row justify-content-center">
                                     <div class="col-6">
                                         <p class="card-text">All your past reviews will be saved here. You can still review
-                                            TradeExpert that you've previously worked with.
+                                            Tradexpert that you've previously worked with.
 
                                         </p>
                                     </div>
                                     <div class="col-3">
-                                        <a href="{{ route('giveFeedback') }}" class="btn tasker-btn">Find TradeExpert to
+                                        <a href="{{ route('giveFeedback') }}" class="btn tasker-btn">Find Tradexpert to
                                             review</a>
                                     </div>
                                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tasker;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendEmailJob;
 use App\Mail\JobMail;
+use App\Mail\MyTestMail;
 use App\Models\AppliedJob;
 use App\Models\Category;
 use App\Models\CompanyProfile;
@@ -13,8 +14,10 @@ use App\Models\Subscriptions;
 use App\Models\Package;
 use App\Models\SavedJob;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Stripe;
 
 class DashboardController extends Controller
@@ -41,12 +44,20 @@ class DashboardController extends Controller
         return view('frontend.tasker.dashboard.index', compact('jobs', 'savedJobs'));
     }
 
+    public function myDoc()
+    {
+        $company = auth()->user()->company;
+
+        return view('frontend.tasker.dashboard.my-doc', compact('company'));
+    }
+
     public function account(Request $request)
     {
         $company = auth()->user()->company;
         $package = Package::find($company->package_id);
         $categories = Category::all();
         if ($request->method() === 'POST') {
+            // dd($request->all());
             $c = CompanyProfile::find(Auth::user()->company->id);
             $c->business_name = $request->business_name;
             $c->business_phone = $request->business_phone;
@@ -62,7 +73,8 @@ class DashboardController extends Controller
             $c->title = $request->title;
             $c->first_name = $request->first_name;
             $c->last_name = $request->last_name;
-            $c->date_of_birth = $request->date_of_birth;
+            $c->business_registration_number = $request->business_registration_number;
+            // $c->date_of_birth = $request->date_of_birth;
             $c->business_category = json_encode($request->business_category);
             $images = $request->old_images;
             if ($request->hasFile('images')) {
@@ -77,7 +89,23 @@ class DashboardController extends Controller
                 $c->logo = $logo;
             }
             $c->images = json_encode($images);
-            $c->save();
+            // $c->save();
+            if ($c->save()) {
+                if ($request->new_password != null && $request->current_password != null) {
+                    //check if old password is correct
+                    if (!Hash::check($request->current_password, Auth::user()->password)) {
+                        return redirect()->back()->with('error', 'Old password is incorrect');
+                    } else {
+                        // dd('here');
+                        $user = User::find(Auth::user()->id);
+                        $user->password = Hash::make($request->new_password);
+                        $user->save();
+                        //logout user and redirect to login page
+                        Auth::logout();
+                        return redirect()->route('login')->with('success', 'Password updated successfully');
+                    }
+                }
+            }
             return redirect()->back()->with('success', 'Account updated successfully');
         }
 
@@ -326,8 +354,7 @@ class DashboardController extends Controller
     {
         $jobs = Jobs::whereIn('status', ['replied', 'complete'])
             ->get()->map(function ($job) {
-                $company =
-                    CompanyProfile::find(auth()->user()->company->id)
+                $company = CompanyProfile::find(auth()->user()->company->id)
                     ->whereJsonContains('business_subcategory', "$job->subcategory_id")->first();
                 if ($company) {
                     return $job;
@@ -335,6 +362,7 @@ class DashboardController extends Controller
                     return null;
                 }
             })->filter();
+
         $job_ids = SavedJob::where('user_id', auth()->user()->id)->pluck('job_id')->toArray();
         $savedJobs = Jobs::whereIn('id', $job_ids)->get();
         return view('frontend.tasker.dashboard.jobs', compact('jobs', 'savedJobs'));
@@ -409,8 +437,10 @@ class DashboardController extends Controller
         $data = [
             'user' => $job->user,
             'company' => auth()->user()->company,
-            'subject' => 'New Proposal for your Job ',
-            'title' => 'A TradExpert is interested in your job ',
+            'subject' => 'New Proposal for your Job',
+            'title' => 'A Tradexpert is interested in your job',
+            'body' => 'A Tradexpert is interested in your job, please check your dashboard for more details',
+            'cover_letter' => $request->cover_letter,
         ];
 
         SendEmailJob::dispatch($data);
@@ -423,5 +453,42 @@ class DashboardController extends Controller
             'success' => 'Job applied successfully',
             'redirect' => route('tasker.dashboard')
         ]);
+    }
+
+    public function uploadDoc(Request $request)
+    {
+        $companyDetails = CompanyProfile::find(auth()->user()->company->id);
+        $bin_images = [];
+        if ($request->hasFile('bin_images')) {
+            foreach ($request->file('bin_images') as $image) {
+                $name = $image->store('uploads/company/' . $companyDetails->id);
+                $bin_images[] = $name;
+            }
+        }
+        $companyDetails->bin_images = json_encode($bin_images);
+        $companyDetails->save();
+
+        //dispatch job to send email to admin
+        $user = auth()->user();
+        $details = [
+            'user' => $user,
+            'subject' => 'New Document Uploaded',
+            'title' => 'New Document Uploaded',
+            'body' => "$user->name has uploaded a document, please check your dashboard for more details",
+        ];
+
+        $userx = User::where('role', 'admin')->get();
+        foreach ($userx as $admin) {
+            dispatch(new \App\Jobs\RegistrationNotification($admin, $details));
+        }
+        dispatch(new \App\Jobs\RegistrationNotification($user, [
+            'user' => $user,
+            'subject' => 'Your application is under review.',
+            'title' => 'Your application is under review.',
+            'button' => 'Login',
+            'url' => route('login'),
+            'body' => "Your application is under review. We have received the application documents.You can check the status of your account approval and  your documents verification in your dashboard "
+        ]));
+        return back()->with('success', 'Documents uploaded successfully');
     }
 }

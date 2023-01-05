@@ -43,14 +43,21 @@
                             </button>
                         @else
                             @if (creditCalculation() > 0)
-                                <button onclick="applyModal({{ $item }})">
-                                    <img src="/assets/images/elc/icon2.gif" alt="">Send a
-                                    quote ({{ creditCalculation() }} Left)
-                                </button>
+                                <div class=" d-flex">
+                                    <button onclick="applyModal({{ $item }})">
+                                        <img src="/assets/images/elc/icon2.gif" alt="">Send a
+                                        quote ({{ creditCalculation() }} Left)
+                                    </button>
+                                    <a style="background-color:green !important"
+                                        href="{{ route('tasker.membership') }}">Upgrade
+                                        Membership</a>
+                                </div>
                             @else
                                 <a href="{{ route('tasker.credits') }}">
                                     <img src="/assets/images/elc/icon2.gif" alt=""> Insufficient Credit(Top Up)
                                 </a>
+                                <a style="background-color:green !important" href="{{ route('tasker.membership') }}">Upgrade
+                                    Membership</a>
                             @endif
                         @endif
 
@@ -68,7 +75,7 @@
             @if ($saved)
                 <div class="heart-icon">
                     <a href="javascript:void(0)" onclick="saveJob({{ $item->id }})"><i
-                            class="fas fa-heart fs-1 on-hover-heart" style="color: #204746"></i></a>
+                            class="fas fa-heart fs-1 on-hover-heart" style="color: #dc3545"></i></a>
                 </div>
             @else
                 <div class="heart-icon">

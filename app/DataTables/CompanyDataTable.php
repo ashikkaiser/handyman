@@ -23,13 +23,23 @@ class CompanyDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
-
-                $action = '<div class="btn-group  m-r-10">
+                if ($row->is_active) {
+                    $action = '<div class="btn-group  m-r-10">
                 <a href="' . route('admin.company.show', $row->id) . '" class="mx-2"><i class="fa fa-search"></i> </a>
                 <a href="' . route('admin.company.edit', $row->id) . '" class="mx-2"><i class="fa fa-edit"></i> </a>
                 <a href="' . route('admin.company.delete', $row->id) . '" class="mx-2 text-danger"><i class="fa fa-trash"></i>   </a>
+                <a href="' . route('admin.company.approved', $row->id) . '" class="mx-2 text-danger"><i class="fa fa-xmark"></i></a>
               </div>';
-                return $action;
+                    return $action;
+                } else {
+                    $action = '<div class="btn-group  m-r-10">
+                <a href="' . route('admin.company.show', $row->id) . '" class="mx-2"><i class="fa fa-search"></i> </a>
+                <a href="' . route('admin.company.edit', $row->id) . '" class="mx-2"><i class="fa fa-edit"></i> </a>
+                <a href="' . route('admin.company.delete', $row->id) . '" class="mx-2 text-danger"><i class="fa fa-trash"></i>   </a>
+                <a href="' . route('admin.company.approved', $row->id) . '" class="mx-2 text-success"><i class="fa fa-check"></i></a>
+                </div>';
+                    return $action;
+                }
             })
 
 

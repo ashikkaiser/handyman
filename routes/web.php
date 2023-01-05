@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\JobsController;
 use App\Http\Controllers\Backend\PagesController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Backend\TestimonialController;
 use App\Models\Page;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
+// use App\Mail\MyTestMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'IsSuperAdm
     Route::get('company/delete/{id}', [UserController::class, 'companyDelete'])->name('company.delete');
 
 
-
+    //Admin Route
+    Route::get('all-admin', [AdminController::class, 'index'])->name('all-admin');
+    Route::post('new-admin', [AdminController::class, 'store'])->name('new-admin');
 
     Route::resource('transactions', App\Http\Controllers\Backend\TransactionController::class);
 
@@ -120,6 +123,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'IsSuperAdm
     Route::get('reviews/approve/{id}', [JobsController::class, 'approveReview'])->name('reviews.approve');
     Route::get('reviews/delete/{id}', [JobsController::class, 'deleteReview'])->name('reviews.delete');
     Route::get('reviews/view/{id}', [JobsController::class, 'viewReview'])->name('reviews.view');
+    Route::get('reviews/edit/{id}', [JobsController::class, 'editReview'])->name('reviews.edit');
+    Route::post('reviews/modify', [JobsController::class, 'updateReview'])->name('reviews.modify');
 
     Route::get('pages', [PagesController::class, 'index'])->name('pages.index');
     Route::get('pages/create', [PagesController::class, 'create'])->name('pages.create');
@@ -140,7 +145,10 @@ Route::any('/payment/stripe/topupFromExisting', [App\Http\Controllers\StripeCont
 Route::any('/payment/stripe/cardPayment', [App\Http\Controllers\StripeController::class, 'cardPayment'])->name('payment.cardPayment');
 Route::any('/payment/stripe/subscription', [App\Http\Controllers\StripeController::class, 'subscription'])->name('payment.subscription');
 Route::group(['as' => 'tasker.'], function () {
+
     Route::middleware(['guest'])->group(function () {
+        Route::any('/teade-expert/welcome', [App\Http\Controllers\Tasker\AuthController::class, 'welcome'])->name('register.welcome');
+
         Route::any('step1', [App\Http\Controllers\Tasker\AuthController::class, 'step1'])->name('register.step1');
         Route::any('step2', [App\Http\Controllers\Tasker\AuthController::class, 'step2'])->name('register.step2');
         Route::any('step3', [App\Http\Controllers\Tasker\AuthController::class, 'step3'])->name('register.step3');
@@ -163,6 +171,8 @@ Route::group(['as' => 'tasker.'], function () {
         Route::get('jobs', [App\Http\Controllers\Tasker\DashboardController::class, 'jobs'])->name('jobs');
         Route::get('credits', [App\Http\Controllers\Tasker\DashboardController::class, 'credits'])->name('credits');
         Route::get('saved-job', [App\Http\Controllers\Tasker\DashboardController::class, 'savedJob'])->name('saveJob');
+        Route::get('my-documents', [App\Http\Controllers\Tasker\DashboardController::class, 'myDoc'])->name('mydocs');
+        Route::post('upload-doc', [App\Http\Controllers\Tasker\DashboardController::class, 'uploadDoc'])->name('uploadDoc');
         Route::get('save-job/{id}', [App\Http\Controllers\Tasker\DashboardController::class, 'saveJob'])->name('saveThisJob');
         Route::post('applyJob', [App\Http\Controllers\Tasker\DashboardController::class, 'applyJob'])->name('applyJob');
         Route::get('profile', [App\Http\Controllers\Tasker\AuthController::class, 'profile'])->name('profile');
@@ -181,3 +191,18 @@ Page::all()->map(function ($page) {
     // dd('/pages/{' . $page->slug . '}');
     Route::get('/pages/{slug}', [App\Http\Controllers\HomeController::class, 'page'])->name("web.$page->slug");
 });
+
+
+// Route::get('send-mail', function () {
+
+//     $details = [
+//         'title' => 'Mail from tradexpert.co.uk',
+//         'body' => 'This is for testing email using smtp'
+//     ];
+
+//     \Mail::to('mostofa122@gmail.com')
+
+//         ->send(new MyTestMail($details));
+
+//     dd("Email is Sent.");
+// });

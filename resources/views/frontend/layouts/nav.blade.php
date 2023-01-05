@@ -70,7 +70,7 @@
                      </a>
                      <form class="d-flex" role="search" style="margin-right: 10px;">
                          <a href={{ route('signUp') }} class="btn tasker-btn" type="submit">
-                             Become a TradeExpert
+                             Become a Tradexpert
                          </a>
                      </form>
                  @endif

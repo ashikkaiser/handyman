@@ -31,6 +31,117 @@
             max-width: 107px;
             margin-left: 28px;
         }
+
+        .overall {
+            float: right;
+            bottom: 50px;
+            margin-left: 10px;
+            position: relative;
+            /* z-index: 2; */
+        }
+
+        .shape {
+
+            height: 70px;
+            width: 70px;
+            border-radius: 100%;
+            box-sizing: border-box;
+            border: 3px solid #204746;
+            font-size: 30px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 60px;
+            color: #204746;
+        }
+
+        .review-area {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+            border-radius: 10px;
+            padding: 15px 15px;
+        }
+
+        .review-summary {}
+
+        .review-top {}
+
+        .progress-wrapper {
+            width: 90px;
+            height: 90px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid rgb(0, 88, 162);
+            margin: 0 auto;
+
+        }
+
+        .progress-total {
+            width: 70px;
+            height: 70px;
+            background-color: rgb(0, 88, 162);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .progress-workmanship {
+            width: 70px;
+            height: 70px;
+            background-color: rgb(119, 213, 205);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .progress-tidiness {
+            width: 70px;
+            height: 70px;
+            background-color: rgb(122, 204, 111);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .progress-reliability {
+            width: 70px;
+            height: 70px;
+            background-color: rgb(0, 126, 180);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .progress-courtesy {
+            width: 70px;
+            height: 70px;
+            background-color: rgb(224, 195, 72);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .review-text {
+            margin-bottom: 15px;
+            text-align: center;
+        }
     </style>
     <style>
         .carousel-inner {
@@ -60,13 +171,13 @@
                                         ->getRoutes($url)
                                         ->match(app('request')->create($url))
                                         ->getName();
-                                    
+
                                     if (session()->has('search')) {
                                         $search = (object) session()->get('search');
                                         $c = \App\Models\CompanyProfile::where('id', $company->id)
                                             ->distance($search->lng, $search->lat)
                                             ->first();
-                                    
+
                                         $distance = $c->distance;
                                     } else {
                                         $distance = null;
@@ -89,19 +200,25 @@
                                 <img src="/{{ $company->logo }}" alt="" />
                             </div>
                         </div>
-                        <div class="profile-button">
+                        <button class="btn btn-success mb-2" style="display: block; width:100%">
+                            <i class="fas fa-phone-alt"></i>
+                            {{ $company->business_phone }}
+                        </button>
+                        <a href="{{ route('post-job') }}?company={{ $company->id }}" class="btn btn-primary text-white"
+                            style="display: block; width:100%">
+                            <i class="fas fa-paper-plane"></i>
+                            Request a quote
+                        </a>
 
-                            <button>
-                                <img src="/assets/images/elc/icon3.gif" alt="" />{{ $company->business_phone }}
-                            </button>
-                        </div>
                         <div class="share-area">
-                            <div class="share-box ">
-                                <div class="addthis_inline_share_toolbox_9ai6"></div>
+                            <div class="share-box" data-bs-toggle="modal" data-bs-target="#shareModal">
+                                {{-- <div class="addthis_inline_share_toolbox_9ai6"></div> --}}
+                                <i class="fas fa-share-alt fs-3"></i>
                                 <p>Share on</p>
                             </div>
                             <div class="save-box" onclick="saveCompany({{ $company->id }})">
-                                <img src="/assets/images/profile/Save.png" alt="" />
+                                {{-- <img src="/assets/images/profile/Save.png" alt="" /> --}}
+                                <i class="fas fa-heart fs-3"></i>
                                 <p>Save</p>
                             </div>
                         </div>
@@ -130,11 +247,11 @@
                 <div class="col-lg-8 mt-3">
                     @php
                         $images = json_decode($company->images);
-                        
+
                     @endphp
                     @if (count($images) > 0)
                         @php
-                            
+
                         @endphp
                         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
@@ -176,7 +293,6 @@
                         <div class="company-details mt-3">
                             <p>{{ $company->business_description }}</p>
                             <div class="company-details-list mt-3 row">
-
                                 <ul class=" single-details-col row" type="none">
                                     @foreach (json_decode($company->business_subcategory) as $item)
                                         @php
@@ -184,14 +300,9 @@
                                         @endphp
                                         <li class="col-xs-6 col-sm-4">
                                             <i class="fas fa-dot-circle"></i> {{ $subcategory->name }}
-
-
                                         </li>
                                     @endforeach
-
-
                                 </ul>
-
                             </div>
                         </div>
                     </div>
@@ -212,7 +323,7 @@
                             @if ($company->business_url)
                                 <li>
                                     <i class="fas fa-globe text-primary"></i>
-                                    <a href="{{ $company->business_url }}"
+                                    <a href="https://{{ $company->business_url }}"
                                         target="_blank">{{ $company->business_url }}</a>
                                 </li>
                             @endif
@@ -220,7 +331,81 @@
                         </ul>
                     </div>
                     <!-- contact section end  -->
+                    <div class="average-review mt-5">
+                        <h4 class="company-common-heading my-4">Reviews Summary</h4>
+                        <div class="review-area">
+                            <div class="review-summary">
+                                <div class="review-top">
+                                    <div class="progress-wrapper">
+                                        <div class="progress-total">
+                                            {{ round($averageTotal, 2) }}
+                                        </div>
+                                    </div>
+                                    <div class="review-text mt-1">
+                                        <p style="font-size: 14px; margin:0">Average score based on
+                                            {{ $company->reviews->count() }} reviews in the last 12
+                                            months
+                                        </p>
+                                        <div><a href="#" class="text-success"
+                                                style="text-decoration: underline">{{ $company->reviews->count() }}
+                                                total review</a></div>
+                                        <span class="text-primary" style="font-size: 16px">The reviews below represent
+                                            customers' views and not
+                                            the views of Tradexpert</span>
+                                    </div>
+                                    <div class="row g-3">
 
+                                        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                            <p class="text-center">Workmanship</p>
+                                            <div class="progress-wrapper">
+                                                <div class="progress-workmanship">
+                                                    {{ round($averageWorkmanship, 2) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                            <p class="text-center">Tidiness</p>
+                                            <div class="progress-wrapper">
+                                                <div class="progress-tidiness">
+                                                    {{ round($averageTidiness, 2) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                            <p class="text-center">Reliability</p>
+                                            <div class="progress-wrapper">
+                                                <div class="progress-reliability">
+                                                    {{ round($averageReliability, 2) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                            <p class="text-center">Courtesy</p>
+                                            <div class="progress-wrapper">
+                                                <div class="progress-courtesy">
+                                                    {{ round($averageCourtesy, 2) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-md-3 col-sm-6">
+                                            <p class="text-center" style="margin:0">Quote Accuracy</p>
+                                            <div class="text-center"><small>({{ $company->reviews->count() }}
+                                                    Reviews)</small></div>
+                                            <div class="progress-wrapper">
+                                                <div class="progress-total">
+                                                    {{ round($averageTotal, 2) }}
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <a href="{{ route('giveFeedbackCompany', $company->id) }}"
+                                            class="btn btn-primary text-white px-5">Leave a review</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- customer review start  -->
                     <div class="customer-review">
                         <h4 class="company-common-heading my-4">Customer Reviews</h4>
@@ -232,25 +417,50 @@
                                         <img src="/assets/images/profile/Guaranteed icon.png" alt="" />
                                         <p>Verified Review</p>
                                     </div>
+                                    <div class="overall">
+                                        <div class="shape">
+                                            @if (!empty($item->overall))
+                                                {{ $item->overall }}
+                                            @else
+                                                {{ ($item->workmanship + $item->tidiness + $item->reliability + $item->courtesy) / 4 }}
+                                            @endif
+                                        </div>
+                                    </div>
                                     <p> {{ $item->review }} </p>
-                                    <h4>Score Breakdown</h4>
-                                    <ul>
-                                        <li>
-                                            <div>Workmanship</div>
-                                            <div>{{ $item->workmanship }}</div>
-                                        </li>
-                                        <li>
-                                            <div>Tidiness</div>
-                                            <div>{{ $item->workmanship }}</div>
-                                        </li>
-                                        <li>
-                                            <div>reliability</div>
-                                            <div>{{ $item->reliability }}</div>
-                                        </li>
-                                        <li>
-                                            <div>Courtesy</div>
-                                            <div>{{ $item->courtesy }}</div>
-                                        </li>
+                                    @if (empty($item->overall))
+                                        <h4>Score Breakdown</h4>
+                                    @endif
+                                    <ul style="padding: 0!important; justify-content:end">
+                                        @if (!empty($item->workmanship))
+                                            <li>
+                                                <div>Workmanship</div>
+                                                <div>{{ $item->workmanship }}</div>
+                                            </li>
+                                        @endif
+                                        @if (!empty($item->tidiness))
+                                            <li>
+                                                <div>Tidiness</div>
+                                                <div>{{ $item->tidiness }}</div>
+                                            </li>
+                                        @endif
+                                        @if (!empty($item->reliability))
+                                            <li>
+                                                <div>reliability</div>
+                                                <div>{{ $item->reliability }}</div>
+                                            </li>
+                                        @endif
+                                        @if (!empty($item->courtesy))
+                                            <li>
+                                                <div>Courtesy</div>
+                                                <div>{{ $item->courtesy }}</div>
+                                            </li>
+                                        @endif
+                                        @if (!empty($item->overall))
+                                            <li>
+                                                <div>Score</div>
+                                                <div>{{ $item->overall }}</div>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             @empty
@@ -263,6 +473,72 @@
                         </div>
                     </div>
                     <!-- customer review end -->
+
+
+                    <!-- verify document start  -->
+                    <div class="customer-review">
+                        <h4 class="company-common-heading my-4">Company Details</h4>
+                        <div class="customer-wrap">
+                            <ul class="list-group py-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Trading address verified
+                                    @if (isset($company->business_registration_number))
+                                        <i class="fas fa-check-circle text-success fs-5"></i>
+                                    @else
+                                        <i class="fas fa-times-circle text-danger fs-5"></i>
+                                    @endif
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    ID Checked
+                                    @if ($company->verified)
+                                        <i class="fas fa-check-circle text-success fs-5"></i>
+                                    @else
+                                        <i class="fas fa-times-circle text-danger fs-5"></i>
+                                    @endif
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Tradexpert Standards
+                                    @if ($company->verified)
+                                        <i class="fas fa-check-circle text-success fs-5"></i>
+                                    @else
+                                        <i class="fas fa-times-circle text-danger fs-5"></i>
+                                    @endif
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- verify document end  -->
+
+                    <!-- verify document start  -->
+                    <div class="customer-review">
+                        <h4 class="company-common-heading my-4">Company Status</h4>
+                        <div class="customer-wrap">
+                            <ul class="list-group py-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    VAT Registered
+                                    @if (isset($company->business_registration_number))
+                                        {{-- <span class="badge bg-primary rounded-pill">YES</span> --}}
+                                        <i class="fas fa-check-circle text-success fs-5"></i>
+                                    @else
+                                        {{-- <span class="badge bg-danger rounded-pill">NO</span> --}}
+                                        <i class="fas fa-times-circle text-danger fs-5"></i>
+                                    @endif
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Company Type
+                                    <span class="badge bg-primary rounded-pill">{{ $company->business_type }}</span>
+
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Business Owners
+                                    <span class="badge bg-primary rounded-pill">{{ $company->user->name }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- verify document end  -->
                     <!-- vetting status start  -->
                     {{-- <div class="vetting-status-area mt-5">
                         <h4 class="company-common-heading">Vetting Status</h4>
@@ -381,10 +657,76 @@
         </div>
     </section>
     <!-- Profile content section end -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Share this trade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        {{-- <img src="/{{ $company->logo }}" alt=""
+                            style="border-radius: 10px;border:1px solid #000" width="100%">
+                        <p>{{ $company->business_name }}</p> --}}
+                        <div class="col-3">
+                            <img src="/{{ $company->logo }}" alt=""
+                                style="border-radius: 10px;border:1px solid #000" width="100%">
+                        </div>
+                        <div class="col-9">
+                            <ul>
+                                <li>{{ $company->business_name }}</li>
+                            </ul>
+                        </div>
+                        <ul class="list-group mt-2">
+                            {{-- copy link --}}
+                            <p class="" id="clickCopy" style="opacity: 0;font-size:0px">{{ url()->current() }}</p>
+                            <a class="list-group-item copy-text" data-clipboard-target="#clickCopy">
+                                <i class="fas fa-link"></i> Copy Link
+                            </a>
+                            <a class="list-group-item"
+                                href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ url()->current() }}"
+                                target="_blank">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                            <a class="list-group-item"
+                                href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
+                                target="_blank">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a class="list-group-item" href="https://api.whatsapp.com/send?text={{ url()->current() }}"
+                                target="_blank">
+                                <i class="fab fa-whatsapp"></i> Whatsapp
+                            </a>
+                            <a class="list-group-item"
+                                href="https://twitter.com/intent/tweet?text={{ url()->current() }}" target="_blank">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
 @endsection
 
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+    <script>
+        $(function() {
+            new Clipboard('.copy-text');
+        });
+    </script>
     <script>
         const myCarouselElement = document.querySelector('#carouselExampleIndicators')
         const carousel = new bootstrap.Carousel(myCarouselElement, {

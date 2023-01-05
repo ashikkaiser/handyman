@@ -511,7 +511,7 @@
                     <div class="carousel-inner">
                         @foreach ($testimonials as $item)
                             <div
-                                class="carousel-item 
+                                class="carousel-item
                             @if ($loop->first) active @endif
                             ">
                                 <div class="card-body">
@@ -619,7 +619,7 @@
 
             </div>
             <div class="wrapper mt-5" style="justify-content: center;">
-                <a type="button" href="{{ route('tasker.register.step1') }}" class="card-btn">TradExpert Signup</a>
+                <a type="button" href="{{ route('tasker.register.step1') }}" class="card-btn">Tradexpert Signup</a>
 
             </div>
         </section>

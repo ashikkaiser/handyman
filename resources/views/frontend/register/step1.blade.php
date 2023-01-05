@@ -36,7 +36,7 @@
                     <div class="business-content">
                         <h3>Your business details</h3>
                         <p>
-                            Thanks for your interest in TradeExpert. Please tell us a bit
+                            Thanks for your interest in Tradexpert. Please tell us a bit
                             more about your business so that we can:
                         </p>
                         <ul class="business-list">
@@ -119,18 +119,27 @@
                                 <option value="Individual"
                                     {{ old('business_type', $session->business_type ?? '') == 'Individual' ? 'selected' : '' }}>
                                     Individual</option>
+                                <option value="Sole Trader"
+                                    {{ old('business_type', $session->business_type ?? '') == 'Sole Trader' ? 'selected' : '' }}>
+                                    Sole Trader</option>
                                 <option value="Limited Company"
                                     {{ old('business_type', $session->business_type ?? '') == 'Limited Company' ? 'selected' : '' }}>
                                     Limited Company</option>
-                                <option value="Limited"
+                                {{-- <option value="Limited"
                                     {{ old('business_type', $session->business_type ?? '') == 'Limited' ? 'selected' : '' }}>
                                     Limited</option>
                                 <option value="Company"
                                     {{ old('business_type', $session->business_type ?? '') == 'Company' ? 'selected' : '' }}>
-                                    Company</option>
+                                    Company</option> --}}
 
                             </select>
                             <label for="business_type">Your Business Type</label>
+                        </div>
+                        <div class="form-floating mb-3 bin-number">
+                            <input type="text" name="business_registration_number" class="form-control"
+                                placeholder="Your Business Registration Number"
+                                value="{{ old('business_registration_number', $session->business_registration_number ?? '') }}">
+                            <label for="">Your Business Registration Number</label>
                         </div>
                         <div class="form-floating mb-3">
                             <select name="business_employee_size" id="business_employee_size" class="form-control">
@@ -168,7 +177,18 @@
 @endsection
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+    <script>
+        $('.bin-number').hide();
+        $(document).ready(function() {
+            $('#business_type').on('change', function() {
+                if (this.value == 'Limited Company') {
+                    $('.bin-number').show();
+                } else {
+                    $('.bin-number').hide();
+                }
+            });
+        });
+    </script>
 
 
     <script>

@@ -23,6 +23,11 @@
 @section('page_title', 'My Skills')
 
 @section('content')
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="account-info-area mt-4">
         <form action="" method="POST" enctype="multipart/form-data">
             @csrf
@@ -115,7 +120,13 @@
                     </div>
                 </div>
 
-
+                <div class="col-md-12">
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="text" value="{{ $company->business_registration_number }}"
+                            name="business_registration_number" placeholder="Your Business Registration Number" required>
+                        <label for="">Your Business Registration Number</label>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
                         <input class="form-control" type="text" value="{{ $company->business_address1 }}"
@@ -178,11 +189,24 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
+                        <input class="form-control" type="text" name="current_password"
+                            placeholder="Cureent Password">
+                        <label for="">Cureent Password</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="text" name="new_password" placeholder="New Password">
+                        <label for="">New Password</label>
+                    </div>
+                </div>
+                {{-- <div class="col-md-6">
+                    <div class="form-floating mb-3">
                         <input class="form-control" type="text" value="{{ $company->date_of_birth }}"
                             name="date_of_birth" placeholder="Date of birth dd/mm/yyyy" required>
                         <label for="">Date of birth dd/mm/yyyy</label>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- <div class="col-md-6">
                     <label for="file-upload" class="custom-file-upload col-md-12">

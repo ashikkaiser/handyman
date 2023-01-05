@@ -131,6 +131,21 @@
                                     </select>
 
                                 </div>
+
+                                @if ($company->business_type == 'Limited Company')
+                                    <div class="form-group col-md-12">
+                                        <label class="form-label" for="business_registration_number">Business Registration
+                                            Number</label>
+                                        <input type="text" name="business_registration_number"
+                                            id="business_registration_number"
+                                            value="{{ $company->business_registration_number }}" class="form-control"
+                                            placeholder="Business Registration Number" />
+                                        @if ($errors->has('business_registration_number'))
+                                            <span
+                                                class="text-danger">{{ $errors->first('business_registration_number') }}</span>
+                                        @endif
+                                    </div>
+                                @endif
                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="business_address1">Business Address</label>
                                     <input type="text" name="business_address1" id="business_address1"
@@ -214,6 +229,28 @@
                                     <div id="cover_images" class="row"></div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <label for="logo" class="form-label">Upload your business cover image</label>
+                                    <div id="bin_images" class="row"></div>
+                                </div>
+                                {{-- @php
+                                    $bin_images = json_decode($company->bin_images);
+                                    // dd($bin_images);
+                                @endphp
+                                @foreach ($bin_images as $key => $value)
+                                    <div class="col-md-6">
+                                        <label for="logo" class="form-label mb-3">Company Registration
+                                            Document</label>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="/{{ $value }}" alt="Company Registration Document"
+                                                    class="img-fluid">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                @endforeach --}}
+
                                 <div class="form-check form-switch ps-5">
                                     <input class="form-check-input" name="is_active"
                                         {{ $company->is_active === 1 ? 'checked' : '' }} value="1" type="checkbox"
@@ -266,16 +303,30 @@
         })
     </script>
     <script>
+        $("#bin_images").spartanMultiImagePicker({
+            fieldName: 'bin_images[]',
+            maxCount: 1,
+            rowHeight: '200px',
+            groupClassName: 'col-md-4',
+            maxFileSize: '',
+            dropFileLabel: "Drop Here",
+            placeholderImage: {
+                image: '/{{ json_decode($company->bin_images)[0] ?? '' }}',
+                width: '100%',
+                height: '100%'
+            },
+        });
         $("#logo").spartanMultiImagePicker({
             fieldName: 'logo',
             maxCount: 1,
             rowHeight: '200px',
-            groupClassName: 'col-md-12',
+            groupClassName: 'col-md-4',
             maxFileSize: '',
             dropFileLabel: "Drop Here",
             placeholderImage: {
                 image: '/{{ $company->logo }}',
-                width: '100%'
+                width: '100%',
+                height: '100%'
             },
         });
         $("#cover_images").spartanMultiImagePicker({

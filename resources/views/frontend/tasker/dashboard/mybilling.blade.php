@@ -129,7 +129,6 @@
     <div class="single-comment mt-4">
 
         <h5>BILLING INFORMATION</h5>
-
         <p> <strong>Name</strong>: {{ $billingInfo->name }}</p>
         <p> <strong>Email</strong>: {{ $billingInfo->email }}</p>
         <p> <strong>Billing address</strong> :
@@ -211,7 +210,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary text-white">Save changes</button>
                     </div>
                 </form>
@@ -272,11 +271,12 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-        const stripe = Stripe('{{ env('STRIPE_KEY') }}');
+        const stripe = Stripe('{{ config('STRIPE_KEY') }}');
         const elements = stripe.elements();
         const cardElement = elements.create('card', {
             hidePostalCode: true
         });
+
         cardElement.mount('#card-element');
 
         $("#cardAdd").submit(function(e) {

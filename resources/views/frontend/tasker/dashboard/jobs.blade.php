@@ -43,7 +43,6 @@
                     <h6>Email : {{ $item->email }}</h6>
                     <p class="pb-3">{{ $item->post_code }}</p>
                     <div class="comment-button">
-
                         <button> <img src="/assets/images/elc/icon3.gif" alt="">{{ $item->phone }}</button>
                         @if ($item->status === 'replied')
                             <button> Assaigned to You</button>

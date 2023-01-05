@@ -38,6 +38,7 @@ class AuthController extends Controller
             ]);
 
             Session::put('step1', $request->all());
+
             return redirect()->route('tasker.register.step2');
         }
         $categories = Category::whereNull('parent_id')->get();
@@ -86,6 +87,7 @@ class AuthController extends Controller
     }
     public function step2(Request $request)
     {
+        //all the data from step1
         if ($request->method() === 'POST') {
 
             $request->validate([
@@ -101,8 +103,6 @@ class AuthController extends Controller
     public function step3(Request $request)
     {
         if ($request->method() === 'POST') {
-
-
             $request->validate([
                 'business_address1' => 'required',
                 'business_town' => 'required',
@@ -145,7 +145,6 @@ class AuthController extends Controller
     }
     public function step5()
     {
-
         $session = (object) Session::all();
         if (isset($session->step1) && isset($session->step2) && isset($session->step3) && isset($session->step4)) {
             $package  = Package::find($session->step2['package_id']);
@@ -160,6 +159,7 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
+        // dd(Session::all());
         $session = (object) Session::all();
         try {
             $package = Package::find($session->step2['package_id']);
@@ -169,6 +169,7 @@ class AuthController extends Controller
             $company->business_phone =  $session->step1['business_phone'];
             $company->business_type =  $session->step1['business_type'];
             $company->business_employee_size =  $session->step1['business_employee_size'];
+            $company->business_registration_number =  $session->step1['business_registration_number'];
             $company->business_category =  json_encode($session->step1['business_category']);
             $company->business_url =  $session->step1['business_url'];
             $company->business_subcategory =  json_encode($session->step1['business_subcategory']);
@@ -186,17 +187,18 @@ class AuthController extends Controller
             $company->package_id =  $session->step2['package_id'];
             $company->credit =  $package->credit;
 
-            // dd($package->price);
+
 
             if ($package->price === 0.00) {
+
                 $free = new StripeController();
                 $free->freesubscription($company);
             } else {
                 $company->expiry_date =  Carbon::now()->addDays(10);
                 $company->payment_date =  Carbon::now();
             }
-            $company->subscription_id =  Session::get('info')['subscription_id'];
 
+            $company->subscription_id =  Session::get('info')['subscription_id'];
             if ($company->save()) {
                 if (Session::get('info')) {
                     $subscription = new Subscriptions();
@@ -220,25 +222,38 @@ class AuthController extends Controller
                 Session::flush();
                 $details = [
                     'user' => $user,
-                    'title' => 'New User Registration',
-                    'body' => "A new user $user->name has signup as a homeowner"
+                    'subject' => 'New Company Registration',
+                    'title' => 'New Company Registration',
+                    'body' => "A new company $company->business_name has signup as a Company"
                 ];
 
-                $userx = User::where('role', 'admin')->first();
-                dispatch(new \App\Jobs\RegistrationNotification($userx, $details));
+                $userx = User::where('role', 'admin')->get();
+                foreach ($userx as $admin) {
+                    dispatch(new \App\Jobs\RegistrationNotification($admin, $details));
+                }
                 dispatch(new \App\Jobs\RegistrationNotification($user, [
                     'user' => $user,
+                    'subject' => 'Welcome to ' . config('app.name'),
                     'title' => 'Welcome to ' . config('app.name'),
-                    'body' => "Welcome to " . config('app.name') . " your account has been created successfully. We are glad to have you on board. your accoount will be activated once verified by our team. Thank you for choosing us."
+                    'button' => 'Login',
+                    'url' => route('login'),
+                    'body' => "Welcome to " . config('app.name') . " your account has been created successfully. We are glad to have you on board. your accoount will be activated once verified by our team. Thank you for choosing us. Click Login button below to Login and Upload your ID document, Your company logo and Profile images."
                 ]));
-                return redirect()->route('login')->with('success', 'TradeExpert Registration Successful');
+                return redirect()->route('tasker.register.welcome')->with('success', 'Tradexpert Registration Successful');
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
+
             Log::error($e->getMessage());
-            return redirect()->back()->with('error', 'TradeExpert Registration Failed, Try Again');
+            return redirect()->back()->with('error', 'Tradexpert Registration Failed, Try Again');
         }
     }
+
+    public function welcome()
+    {
+        return view('frontend.tasker.welcome');
+    }
+
+
     public function profile()
     {
         $company = CompanyProfile::where('user_id', auth()->user()->id)
@@ -270,8 +285,26 @@ class AuthController extends Controller
                 }
             }
             $company->images = json_encode($images);
+            $bin_images = [];
+            if ($request->hasFile('bin_images')) {
+                foreach ($request->file('bin_images') as $image) {
+                    $name = $image->store('uploads/company/' . $company->id);
+                    $bin_images[] = $name;
+                }
+            }
+            $company->bin_images = json_encode($bin_images);
             // dd($company);
             $company->save();
+            $user = User::where('id', auth()->user()->id)
+                ->first();
+            dispatch(new \App\Jobs\RegistrationNotification($user, [
+                'user' => $user,
+                'subject' => 'Your application is under review.',
+                'title' => 'Your application is under review.',
+                'button' => 'Login',
+                'url' => route('login'),
+                'body' => "Your application is under review. We have received the application documents.You can check the status of your account approval and  your documents verification in your dashboard "
+            ]));
             return redirect()->route('tasker.dashboard');
         }
         $company = CompanyProfile::where('user_id', auth()->user()->id)

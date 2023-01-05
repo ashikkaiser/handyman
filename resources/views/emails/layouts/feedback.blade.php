@@ -19,7 +19,7 @@
                         style="box-sizing: border-box; position: relative; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 24px; color: #666666; font-weight: 400; padding: 0px 52px 24px 52px;">
                         <span
                             style="box-sizing: border-box; position: relative; font-family: 'Open Sans', sans-serif !important;">
-                            Once your job is done, simply leave your tradesperson a TradeExpert review
+                            Once your job is done, simply leave your tradesperson a Tradexpert review
                             and your job will
                             be covered by our free guarantee. Further eligibility criteria and <a
                                 href="{{ url('guaranteed-terms') }}"

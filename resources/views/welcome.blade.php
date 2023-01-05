@@ -288,7 +288,7 @@
                     <div class="serach-box" onclick="inputClick()">Search</div>
                 </div>
                 <p>or <a data-bs-toggle="modal" data-bs-target="#companySearchModal" style="cursor:pointer">Find
-                        TradeExpert</a></p>
+                        Tradexpert</a></p>
             </div>
         </div>
     </div>
@@ -439,7 +439,7 @@
                     </div>
                 </div>
                 {{-- <div class="modal-footer">
-                                
+
                             </div> --}}
             </div>
         </div>

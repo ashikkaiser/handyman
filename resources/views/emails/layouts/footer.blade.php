@@ -72,8 +72,8 @@
                                 style="box-sizing: border-box; position: relative; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 18px; color: #333333; font-weight: 300; padding-bottom: 16px;">
                                 <span
                                     style="box-sizing: border-box; position: relative; font-family: 'Open Sans', sans-serif !important;">
-                                    © {{ date('Y') }} TradeExpert.
-                                    {{-- TradeExpert is a trading name of Vetted Limited.
+                                    © {{ date('Y') }} Tradexpert.
+                                    {{-- Tradexpert is a trading name of Vetted Limited.
                                     Company
                                     registered in England and Wales, Registration number 4285394 --}}
                                 </span>
@@ -84,7 +84,7 @@
                                 style="box-sizing: border-box; position: relative; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 18px; color: #333333; font-weight: 300; padding-bottom: 20px;">
                                 <span
                                     style="box-sizing: border-box; position: relative; font-family: 'Open Sans', sans-serif !important;">
-                                    Registered Office: TradeExpert, Building 2000, Lakeside North
+                                    Registered Office: Tradexpert, Building 2000, Lakeside North
                                     Harbour, Western Road,
                                     Portsmouth, PO6 3EN
                                 </span>

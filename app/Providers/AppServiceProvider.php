@@ -25,12 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        config(['STRIPE_KEY' => json_decode(site('stripe'))->stripe_api]);
-        config(['STRIPE_SECRET' => json_decode(site('stripe'))->stripe_secret]);
+        // config(['STRIPE_KEY' => json_decode(site('stripe'))->stripe_api]);
+        // config(['STRIPE_SECRET' => json_decode(site('stripe'))->stripe_secret]);
 
 
 
-        // 
+        //
         // Share data to all views
 
     }

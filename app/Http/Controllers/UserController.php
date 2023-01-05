@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -131,7 +132,7 @@ class UserController extends Controller
                     'user' => $user,
                     'title' => 'New User Registration',
                     'body' => "A new user $user->name has signup as a User",
-                    'subject' => 'New Home Owner Registration',
+                    'subject' => 'New User Registration',
                 ];
                 $admins = User::where('role', 'admin')->get();
                 foreach ($admins as $admin) {
@@ -156,41 +157,33 @@ class UserController extends Controller
                     $job->post_code = $request->post_code;
                     $job->status = "approved";
                     $job->save();
-                    return redirect()->route('verification.notice')->with('success', 'Job posted successfully');
-                }
+                    $data = [
+                        'user' => $user,
+                        'myself' => true,
+                        'job' => $job,
+                        'subject' => 'Your job has been posted.',
+                        'title' => 'Your job has been posted',
+                        'body' => "Your job has been posted successfully. You can view your job details by clicking the button below.",
+                    ];
 
-                $job = new Jobs();
-                $job->user_id = $user->id;
-                $job->company_id = $request->company_id;
-                $job->description = $request->description;
-                $job->category_id = Category::find($request->subcategory_id)->parent_id;
-                $job->subcategory_id = $request->subcategory_id;
-                $job->start_time = $request->start_time;
-                $job->name = $request->name;
-                $job->email = $request->email;
-                $job->phone = $request->phone;
-                $job->post_code = $request->post_code;
-                $job->status = "approved";
-                $job->save();
-                $data = [
-                    'user' => $user,
-                    'myself' => true,
-                    'job' => $job,
-                    'subject' => 'Your job has been posted.',
-                    'title' => 'Your job has been posted',
-                    'body' => "Your job has been posted successfully. You can view your job details by clicking the button below.",
-                ];
+                    SendEmailJob::dispatch($data);
+                    if (!$job->company_id) {
+                        $getmatchedCompanies =  CompanyProfile::whereJsonContains('business_subcategory', "$job->subcategory_id")->get();
 
-                SendEmailJob::dispatch($data);
-
-                if (!$job->company_id) {
-                    $getmatchedCompanies =
-                        CompanyProfile::whereJsonContains('business_category', $job->category_id)
-                        ->whereJsonContains('business_subcategory', $job->subcategory_id)->get();
-
-                    foreach ($getmatchedCompanies as $company) {
+                        foreach ($getmatchedCompanies as $company) {
+                            $data = [
+                                'user' => User::find($company->user_id),
+                                'myself' => false,
+                                'subject' => 'A job matching your category has been posted. ',
+                                'title' => 'A job matching your category has been posted',
+                                'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                            ];
+                            SendEmailJob::dispatch($data);
+                        }
+                    } else {
+                        $company = CompanyProfile::find($job->company_id);
                         $data = [
-                            'user' => $user,
+                            'user' => User::find($company->user_id),
                             'myself' => false,
                             'subject' => 'A job matching your category has been posted. ',
                             'title' => 'A job matching your category has been posted',
@@ -198,16 +191,86 @@ class UserController extends Controller
                         ];
                         SendEmailJob::dispatch($data);
                     }
-                } else {
-                    $company = CompanyProfile::find($job->company_id);
-                    $data = [
-                        'user' => User::find($company->user_id),
-                        'myself' => false,
-                        'subject' => 'A job matching your category has been posted. ',
-                        'title' => 'A job matching your category has been posted',
-                        'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+
+                    $details = [
+                        'user' => $user,
+                        'subject' => 'New Job Posted',
+                        'title' => 'New Job Posted',
+                        'body' => "A new job posted by user $user->name"
                     ];
+
+                    $userx = User::where('role', 'admin')->get();
+                    foreach ($userx as $admin) {
+                        dispatch(new \App\Jobs\RegistrationNotification($admin, $details));
+                    }
+
+
+
+
+
+                    return redirect()->route('verification.notice')->with('success', 'Job posted successfully');
+                } else {
+                    $job = new Jobs();
+                    $job->user_id = $user->id;
+                    $job->company_id = $request->company_id;
+                    $job->description = $request->description;
+                    $job->category_id = Category::find($request->subcategory_id)->parent_id;
+                    $job->subcategory_id = $request->subcategory_id;
+                    $job->start_time = $request->start_time;
+                    $job->name = $request->name;
+                    $job->email = $request->email;
+                    $job->phone = $request->phone;
+                    $job->post_code = $request->post_code;
+                    $job->status = "approved";
+                    $job->save();
+                    $data = [
+                        'user' => $user,
+                        'myself' => true,
+                        'job' => $job,
+                        'subject' => 'Your job has been posted.',
+                        'title' => 'Your job has been posted',
+                        'body' => "Your job has been posted successfully. You can view your job details by clicking the button below.",
+                    ];
+
                     SendEmailJob::dispatch($data);
+
+
+                    if (!$job->company_id) {
+                        $getmatchedCompanies =  CompanyProfile::whereJsonContains('business_subcategory', "$job->subcategory_id")->get();
+
+                        foreach ($getmatchedCompanies as $company) {
+                            $data = [
+                                'user' => User::find($company->user_id),
+                                'myself' => false,
+                                'subject' => 'A job matching your category has been posted. ',
+                                'title' => 'A job matching your category has been posted',
+                                'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                            ];
+                            SendEmailJob::dispatch($data);
+                        }
+                    } else {
+                        $company = CompanyProfile::find($job->company_id);
+                        $data = [
+                            'user' => User::find($company->user_id),
+                            'myself' => false,
+                            'subject' => 'A job matching your category has been posted. ',
+                            'title' => 'A job matching your category has been posted',
+                            'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                        ];
+                        SendEmailJob::dispatch($data);
+                    }
+                }
+
+                $details = [
+                    'user' => $user,
+                    'subject' => 'New Job Posted',
+                    'title' => 'New Job Posted',
+                    'body' => "A new job posted by user $user->name"
+                ];
+
+                $userx = User::where('role', 'admin')->get();
+                foreach ($userx as $admin) {
+                    dispatch(new \App\Jobs\RegistrationNotification($admin, $details));
                 }
                 return redirect()->route('login')->with('success', 'Job Posted Successfully Please Login to view your job');
             }
@@ -266,6 +329,9 @@ class UserController extends Controller
 
     public function giveFeedback(Request $request)
     {
+        if (!Auth::user()) {
+            return redirect()->route('login');
+        }
         return view('user.review');
     }
 
@@ -303,13 +369,13 @@ class UserController extends Controller
             $review->workmanship = $request->workmanship;
             $review->tidiness = $request->tidiness;
             $review->reliability = $request->timekeeping;
-            $review->courtesy = $request->courtesy;
+            $review->courtesy = is_array($request->courtesy) ? 0 : $request->courtesy;
         } else {
             $review->overall = $request->review;
             $review->review = $request->no_review;
             $review->review_title = $request->no_review_title;
         }
-
+        // dd($review);
         $review->save();
         return redirect()->route('user.dashboard')->with('success', 'Review Submitted Successfully');
     }

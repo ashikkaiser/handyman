@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TRADEXPERT</title>
+    <title>Tradexpert</title>
 
     <!-- font awesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -131,6 +131,10 @@
                                     href="{{ route('tasker.credits') }}">My credits</a></li>
                             <li class="{{ Route::is('tasker.saveJob') ? 'active' : '' }}"><a
                                     href="{{ route('tasker.saveJob') }}">My saved jobs</a></li>
+                            <li class="{{ Route::is('tasker.mydocs') ? 'active' : '' }}"><a
+                                    href="{{ route('tasker.mydocs') }}">My Documents</a></li>
+                            <li class=""><a href="{{ route('company.profile', auth()->user()->company->id) }}"
+                                    target="_blank">View Profile</a></li>
                         </ul>
 
 

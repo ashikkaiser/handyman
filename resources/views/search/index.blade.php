@@ -5,15 +5,15 @@
     <style>
         .comment-img-box img {
             width: 100px;
-            height: 100px;
+            /* height: 100px; */
             margin-right: 5px;
-            border-radius: 50%;
+            border-radius: 10px
         }
 
         .comment-img-box {
 
             margin-right: 5px;
-            border-radius: 50%;
+            border-radius: 10px;
         }
 
         .text-truncate {
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                             {{-- <div class="modal-footer">
-                                
+
                             </div> --}}
                         </div>
                     </div>

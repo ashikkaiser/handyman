@@ -15,7 +15,7 @@
                 <div class="col-sm-12 col-md-5 offset-md-3">
                     <div class="business-content">
                         <h3>On-boarding</h3>
-                        <p> Thanks for your interest in TradeExpert. Please tell us a bit more about your business .
+                        <p> Thanks for your interest in Tradexpert. Please tell us a bit more about your business .
                         </p>
 
                     </div>
@@ -30,6 +30,10 @@
                 <div class="col-sm-12 col-md-5 offset-md-3">
                     <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <div class="col-md-12">
+                            <label for="logo" class="form-label">Upload your ID image for the verification.</label>
+                            <div id="bin_images" class="row"></div>
+                        </div>
                         <div class="col-md-12">
                             <label for="logo" class="form-label">Upload your business logo</label>
                             <div id="logo" class="row"></div>
@@ -63,11 +67,20 @@
 @section('js')
     <script src="/assets/js/upload.js"></script>
     <script>
+        $("#bin_images").spartanMultiImagePicker({
+            fieldName: 'bin_images[]', // this configuration will send your images named "fileUpload" to the server
+            maxCount: 2,
+            rowHeight: '200px',
+            groupClassName: 'col-4',
+            maxFileSize: '',
+            dropFileLabel: "Drop Here",
+
+        });
         $("#logo").spartanMultiImagePicker({
             fieldName: 'logo', // this configuration will send your images named "fileUpload" to the server
             maxCount: 1,
             rowHeight: '200px',
-            groupClassName: 'col-md-12',
+            groupClassName: 'col-4',
             maxFileSize: '',
             dropFileLabel: "Drop Here",
 
@@ -76,7 +89,7 @@
             fieldName: 'images[]', // this configuration will send your images named "fileUpload" to the server
             maxCount: {{ $company->packages->images_limit }},
             rowHeight: '200px',
-            groupClassName: 'col-md-4',
+            groupClassName: 'col-4',
             maxFileSize: '',
             dropFileLabel: "Drop Here",
 

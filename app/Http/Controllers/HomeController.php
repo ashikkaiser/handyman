@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Geocoder;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -59,8 +60,12 @@ class HomeController extends Controller
     {
 
         $company = CompanyProfile::find($request->id);
-
-        return view('company', compact('company'));
+        $averageWorkmanship = $company->reviews->avg('workmanship');
+        $averageTidiness = $company->reviews->avg('tidiness');
+        $averageReliability = $company->reviews->avg('reliability');
+        $averageCourtesy = $company->reviews->avg('courtesy');
+        $averageTotal = ($averageWorkmanship + $averageTidiness + $averageReliability + $averageCourtesy) / 4;
+        return view('company', compact('company', 'averageTotal', 'averageWorkmanship', 'averageTidiness', 'averageReliability', 'averageCourtesy'));
     }
 
 
@@ -181,12 +186,26 @@ class HomeController extends Controller
                         'user' => $user,
                         'title' => 'New User Registration',
                         'body' => "A new user $user->name has signup as a User",
-                        'subject' => 'New Home Owner Registration',
+                        'subject' => 'New User Registration',
                     ];
                     $admins = User::where('role', 'admin')->get();
                     foreach ($admins as $admin) {
                         dispatch(new \App\Jobs\RegistrationNotification($admin, $adminMail));
                     }
+
+
+
+
+
+
+                    // $details = [
+                    //     'user' => $user,
+                    //     'subject' => 'New Homeowner Registration',
+                    //     'title' => 'New Homeowner Registration',
+                    //     'body' => "A new user $user->name has signup as a Homeowner"
+                    // ];
+
+                    // dispatch(new \App\Jobs\RegistrationNotification($user, $details));
                 }
             }
 
@@ -207,6 +226,57 @@ class HomeController extends Controller
                     $job->post_code = $request->post_code;
                     $job->status = "approved";
                     $job->save();
+
+                    $data = [
+                        'user' => $user,
+                        'myself' => true,
+                        'job' => $job,
+                        'subject' => 'Your job has been posted.',
+                        'title' => 'Your job has been posted',
+                        'body' => "Your job has been posted successfully. You can view your job details by clicking the button below.",
+                    ];
+
+                    SendEmailJob::dispatch($data);
+                    if (!$job->company_id) {
+                        $getmatchedCompanies =  CompanyProfile::whereJsonContains('business_subcategory', "$job->subcategory_id")->get();
+
+                        foreach ($getmatchedCompanies as $company) {
+                            $data = [
+                                'user' => User::find($company->user_id),
+                                'myself' => false,
+                                'subject' => 'A job matching your category has been posted. ',
+                                'title' => 'A job matching your category has been posted',
+                                'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                            ];
+                            SendEmailJob::dispatch($data);
+                        }
+                    } else {
+                        $company = CompanyProfile::find($job->company_id);
+                        $data = [
+                            'user' => User::find($company->user_id),
+                            'myself' => false,
+                            'subject' => 'A job matching your category has been posted. ',
+                            'title' => 'A job matching your category has been posted',
+                            'body' => "A job matching your category has been posted. You can view the job details by clicking the button below.",
+                        ];
+                        SendEmailJob::dispatch($data);
+                    }
+
+                    //admin email notification
+                    $details = [
+                        'user' => $user,
+                        'subject' => 'New Job Posted',
+                        'title' => 'New Job Posted',
+                        'body' => "A new job posted by user $user->name"
+                    ];
+
+                    $userx = User::where('role', 'admin')->get();
+                    foreach ($userx as $admin) {
+                        dispatch(new \App\Jobs\RegistrationNotification($admin, $details));
+                    }
+
+
+
                     return redirect()->route('verification.notice')->with('success', 'Job posted successfully');
                 }
                 $job = new Jobs();
@@ -231,15 +301,25 @@ class HomeController extends Controller
                     'body' => "Your job has been posted successfully. You can view your job details by clicking the button below.",
                 ];
 
+                $details = [
+                    'user' => $user,
+                    'subject' => 'New Job Posted',
+                    'title' => 'New Job Posted',
+                    'body' => "A new job posted by user $user->name"
+                ];
+
+                $userx = User::where('role', 'admin')->get();
+                foreach ($userx as $admin) {
+                    dispatch(new \App\Jobs\RegistrationNotification($admin, $details));
+                }
+
                 SendEmailJob::dispatch($data);
                 if (!$job->company_id) {
-                    $getmatchedCompanies =
-                        CompanyProfile::whereJsonContains('business_category', $job->category_id)
-                        ->whereJsonContains('business_subcategory', $job->subcategory_id)->get();
+                    $getmatchedCompanies =  CompanyProfile::whereJsonContains('business_subcategory', "$job->subcategory_id")->get();
 
                     foreach ($getmatchedCompanies as $company) {
                         $data = [
-                            'user' => $user,
+                            'user' => User::find($company->user_id),
                             'myself' => false,
                             'subject' => 'A job matching your category has been posted. ',
                             'title' => 'A job matching your category has been posted',
@@ -259,7 +339,7 @@ class HomeController extends Controller
                     SendEmailJob::dispatch($data);
                 }
 
-
+                //
 
 
                 return redirect()->route('login')->with('success', 'Job Posted Successfully Please Login to view your job');

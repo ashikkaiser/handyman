@@ -25,6 +25,15 @@
         background-position: calc(34vw - 490px) calc(100% + 50px);
     }
 
+
+    .timeline li h5 {
+        margin-left: 10px
+    }
+
+    .timeline li p {
+        margin-left: 10px
+    }
+
     ul.timeline {
         list-style-type: none;
         position: relative;
@@ -93,11 +102,13 @@
                 <div class="w-50">
                     <ul class="timeline">
                         <li>
-                            <h2>Thank You for posting the Job</h2>
-                            <p>To View your job please verify your Email </p>
+                            <h5>Thank You for creating your account with Tradexpert.co.uk </h5>
+                            <p>Login to upload your ID verification documents and update your company profile images</p>
                         </li>
                         <li>
-                            <h2>Your job has been posted. You will be contacted by Tradexpert </h2>
+                            <h5>Your Documents will be verified by Tradexpert.co.uk</h5>
+                            <p>You can check the status of your account approval and your documents verification in your
+                                dashboard</p>
                         </li>
                     </ul>
 
@@ -105,21 +116,12 @@
             </div>
             <div class="col-md-6 d-flex justify-content-center align-items-center ">
                 <div class="w-50">
-                    <h3>Check your email to verify your account
-                        </h1>
-                        <a href="{{ route('user.dashboard') }}" target="_blank" class="btn btn-primary text-white mt-4 mb-3"
-                            rel="noopener noreferrer">Go to my job</a>
+                    <h3>Login to update your company profile</h3>
+                    </h1>
+                    <a href="{{ route('login') }}" target="_blank" class="btn btn-primary text-white mt-4 mb-3"
+                        rel="noopener noreferrer">Login to your account</a>
 
-                        <p> Go to Account section to setup your password</p>
-                        <p> {{ __('If you did not receive the email') }}
-                        <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline"
-                                style="text-decoration: none">{{ __('Click here to request another') }}</button>.
 
-                        </form>
-                        </p>
-                        <div style="border: 1px solid lightgray"></div>
 
                 </div>
 

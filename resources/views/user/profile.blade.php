@@ -132,7 +132,7 @@
                                             {{-- Logout --}}
                                             <li class="list-group-item d-flex justify-content-between align-items-center"
                                                 role="a">
-                                                <a href="{{ route('logout') }}"
+                                                <a href="#"
                                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                                     {{ __('Logout') }}

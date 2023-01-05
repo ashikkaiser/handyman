@@ -21,7 +21,7 @@ use Geocoder;
 
 class UserController extends Controller
 {
-    //
+
     public function company(CompanyDataTable $dataTable)
     {
         return $dataTable->render('backend.user.company.index');
@@ -55,7 +55,7 @@ class UserController extends Controller
         $company->business_name = $request->business_name;
         $company->business_description = $request->business_description;
         $company->business_email = $request->business_email;
-        $company->business_phone = $request->business_phone;
+        // $company->business_phone = $request->business_phone;
         $company->business_type = $request->business_type;
         $company->business_employee_size = $request->business_employee_size;
         $company->business_category = $request->business_category;
@@ -76,7 +76,7 @@ class UserController extends Controller
         $company->payment_date = $request->payment_date;
         $company->expiry_date = $request->expiry_date;
         $company->is_active = $request->is_active;
-
+        $company->business_registration_number = $request->business_registration_number;
         $company->save();
         return redirect()->route('admin.company.index')->with('success', 'Company Updated Successfully');
     }
@@ -114,7 +114,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return back();
+        return redirect()->route('admin.users.index')->with('success', 'User Updated Successfully');
     }
 
     public function compnayApprove($id)
@@ -127,8 +127,8 @@ class UserController extends Controller
             $user = User::find($company->user_id);
             $userMail = [
                 'user' => $user,
-                'title' => 'Congratulations !',
-                'body' => "Your Account has been approved by TradeExpert.co.uk. Now you can login and manage your account.",
+                'title' => 'Congratulations ! Your Account has been approved by Tradexpert.co.uk.',
+                'body' => "Your Account has been approved by Tradexpert.co.uk. Now you can login and manage your account.",
                 'subject' => 'Congratulations !',
                 'button' => 'Login',
                 'url' => route('login'),

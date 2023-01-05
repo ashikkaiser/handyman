@@ -75,7 +75,7 @@
                                                     <div>
                                                         <i class="fas fa-clock "></i>
                                                         <span class="text-black text-small mb-3 ">
-                                                            Awaiting TradeExperts
+                                                            Awaiting Tradexperts
                                                         </span>
                                                     </div>
                                                     {{ $item->applied->count() }}
@@ -123,11 +123,6 @@
 @section('js')
     <script>
         // append loader
-
-
-
-
-
         function fetchjob(id) {
             $('#jobDetials').html(
                 '<div class="text-center mt-5"> <div class="spinner-border mt-5" role="status" style="width: 5rem; height: 5rem;"><span class="visually-hidden">Loading...</span>  </div></div>'

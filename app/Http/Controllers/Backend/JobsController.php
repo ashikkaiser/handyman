@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\JobDataTable;
 use App\DataTables\ReviewDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\CompanyProfile;
 use App\Models\Jobs;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JobsController extends Controller
@@ -47,7 +50,11 @@ class JobsController extends Controller
 
     public function reviews(ReviewDataTable $dataTable)
     {
-        return $dataTable->render('backend.jobs.reviews');
+        $users = User::where('role', '!=', 'company')->get();
+        $companies = CompanyProfile::all();
+        $categories = Category::all();
+
+        return $dataTable->render('backend.jobs.reviews', compact('users', 'companies', 'categories'));
     }
 
     public function approveReview(Request $request)
@@ -74,5 +81,36 @@ class JobsController extends Controller
     {
         $review = Review::find($id);
         return view('backend.jobs.view-review', compact('review'));
+    }
+
+    //editReview
+    public function editReview($id)
+    {
+        $review = Review::find($id);
+        return view('backend.jobs.edit-review', compact('review'));
+    }
+
+    public function updateReview(Request $request)
+    {
+        // dd($request->all());
+        $review = Review::findOrNew($request->id);
+        $review->user_id = $request->user_id;
+        $review->company_id = $request->company_id;
+        $review->category_id = $request->category_id;
+        $review->carried_out = $request->carried_out ? $request->carried_out : 1;
+        $review->review_title = $request->review_title;
+        $review->review = $request->review;
+        $review->phone = $request->phone;
+        $review->workmanship = $request->workmanship ? $request->workmanship : 0;
+        $review->tidiness = $request->tidiness ? $request->tidiness : 0;
+        $review->reliability = $request->reliability ? $request->reliability : 0;
+        $review->courtesy = $request->courtesy ? $request->courtesy : 0;
+        // dd($review);
+        $review->save();
+        if ($request->id) {
+            return redirect()->route('admin.reviews.index')->with('success', 'Review Updated Successfully');
+        } else {
+            return redirect()->route('admin.reviews.index')->with('success', 'Review Created Successfully');
+        }
     }
 }

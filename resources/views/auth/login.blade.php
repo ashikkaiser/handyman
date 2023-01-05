@@ -68,17 +68,18 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <a href="{{ route('password.request') }}" class="text-primary">Forgot Password?</a>
                             </div>
 
                             <button class="sign-btn">Log In</button>
 
                             <div>
                                 <hr>
-                                <h2 class="text-primary mb-2 mt-5">New to TreadExpert?</h2>
+                                <h2 class="text-primary mb-2 mt-5">New to Tradexpert?</h2>
 
                                 <div class="d-grid gap-2 col-12 mx-auto mb-3">
                                     <a href="{{ route('signUp') }}" class="btn btn-outline-primary">
-                                        Signup as TradeExpert</a>
+                                        Signup as Tradexpert</a>
 
                                 </div>
                             </div>
@@ -203,7 +204,7 @@
                         {{-- <h6 data-bs-target="#singUp" class=" text-primary" data-bs-toggle="modal">Create account</h6>
                         <h6 class="mb-5">
                             <a href="{{ route('tasker.register.step1') }}" class="text-primary text-bold mb-5 ">
-                                Signup as TradeExpert</a>
+                                Signup as Tradexpert</a>
                         </h6>
 
                         <div class="modal" id="singUp" tabindex="-1">
