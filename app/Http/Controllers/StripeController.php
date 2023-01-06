@@ -20,9 +20,7 @@ class StripeController extends Controller
 
     function topupFromExisting(Request $request)
     {
-        $stripe = new \Stripe\StripeClient(
-            'sk_test_51KMvQIBs1z3zp1acD6OnXqyVnl7OJ8ievaVYd67riMZ3mFKYM7nke8wM9ajjZIT8LgxoYyj7tZGPOy9wuSJmn80X00bx9RGfMh'
-        );
+        $stripe = new \Stripe\StripeClient(json_decode(site('stripe'))->stripe_secret);
         $user = User::find(Auth::user()->id);
         $company = CompanyProfile::find($user->company_id);
 
@@ -45,9 +43,7 @@ class StripeController extends Controller
 
     function cardPayment(Request $request)
     {
-        $stripe = new \Stripe\StripeClient(
-            'sk_test_51KMvQIBs1z3zp1acD6OnXqyVnl7OJ8ievaVYd67riMZ3mFKYM7nke8wM9ajjZIT8LgxoYyj7tZGPOy9wuSJmn80X00bx9RGfMh'
-        );
+        $stripe = new \Stripe\StripeClient(json_decode(site('stripe'))->stripe_secret);
         $user = User::find(Auth::user()->id);
         $company = CompanyProfile::find($user->company_id);
         $charge = $stripe->charges->create([

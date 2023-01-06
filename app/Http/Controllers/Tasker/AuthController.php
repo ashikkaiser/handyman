@@ -149,7 +149,7 @@ class AuthController extends Controller
         if (isset($session->step1) && isset($session->step2) && isset($session->step3) && isset($session->step4)) {
             $package  = Package::find($session->step2['package_id']);
             $categories = Category::findMany($session->step1['business_category'])->pluck('name')->toArray();
-            $stripe = new \Stripe\StripeClient(config('STRIPE_SECRET')); //env value not working/reading
+            $stripe = new \Stripe\StripeClient(json_decode(site('stripe'))->stripe_secret); //env value not working/reading
             $intent = $stripe->setupIntents->create(['usage' => 'on_session']);
             return view('frontend.register.step5', compact('session', 'package', 'categories', 'intent'));
         } else {

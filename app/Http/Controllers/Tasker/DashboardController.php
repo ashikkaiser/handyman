@@ -352,19 +352,25 @@ class DashboardController extends Controller
 
     public function jobs()
     {
+
+
+
+
         $jobs = Jobs::whereIn('status', ['replied', 'complete'])
             ->get()->map(function ($job) {
                 $company = CompanyProfile::find(auth()->user()->company->id)
                     ->whereJsonContains('business_subcategory', "$job->subcategory_id")->first();
-                if ($company) {
+
+                // dd($company);
+                if ($company->id === $job->company_id) {
                     return $job;
                 } else {
                     return null;
                 }
             })->filter();
-
+        // dd($jobs);
         $job_ids = SavedJob::where('user_id', auth()->user()->id)->pluck('job_id')->toArray();
-        $savedJobs = Jobs::whereIn('id', $job_ids)->get();
+        $savedJobs = Jobs::whereIn('id', $jobs)->get();
         return view('frontend.tasker.dashboard.jobs', compact('jobs', 'savedJobs'));
     }
     public function credits()

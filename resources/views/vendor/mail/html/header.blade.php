@@ -21,7 +21,7 @@
                                                 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-collapse: collapse; padding: 48px 0px 48px 0px;">
                                                 <a href="" target="_blank"
                                                     style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3869d4;">
-                                                    <img src="{{ url(site()->logo) }}" width="220" height="35"
+                                                    <img src="{{ url(site()->logo) }}" width="220" height="50"
                                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -ms-interpolation-mode: bicubic; max-width: 100%; border: none; display: block; font-size: 16px; line-height: 18px; color: #0057a1;"
                                                         border="0" alt="Tradexpert"></a>
                                             </td>

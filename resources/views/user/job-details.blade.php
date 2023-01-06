@@ -1,3 +1,7 @@
+  <style>
+
+  </style>
+
   <div class="row">
       <div class="card mt-3">
           <div class="card-body">
@@ -57,18 +61,17 @@
                                       <div class="job-images mt-2">
                                           <img src="/{{ $applied->company->logo }}" alt="">
                                       </div>
-                                      <div class="d-flex">
-                                          <div class="ms-3">
+                                      <div class="d-flex  mt-2">
+                                          <a href="{{ route('company.profile', $applied->company->id) }}"
+                                              target="_blank" class="ms-3 hover">
                                               <h6>{{ $applied->company->business_name }}</h6>
                                               <p>{{ $applied->company->reviews->count() }}
                                                   ({{ $applied->company->reviews->count() }} reviews)
                                               </p>
-                                          </div>
+                                          </a>
                                       </div>
-
-
                                   </div>
-                                  <div class="dflex justify-content-center mt-3  mb-3">
+                                  <div class="dflex justify-content-center mt-3 mb-3">
                                       <a href="{{ route('giveFeedbackCompany', $applied->company->id) }}"
                                           class="btn btn-primary text-white">Leave a review</a>
                                       <a class="btn tasker-btn">
@@ -78,7 +81,7 @@
                                           <a class="btn btn-success text-white">Assigned</a>
                                       @else
                                           <a href="{{ route('user.modifyJob', [$job->id, $applied->company->id]) }}"
-                                              class="btn btn-primary text-white">Assaign Job to this
+                                              class="btn btn-primary text-white mt-2">Assign Job to this
                                               company</a>
                                       @endif
 

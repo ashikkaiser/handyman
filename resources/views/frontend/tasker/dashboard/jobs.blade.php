@@ -39,13 +39,14 @@
 
                 <div class="comment-content">
                     <h5>{{ $item->subcategory->name }}</h5>
-                    <h6>Name : {{ $item->name }}</h6>
+                    <h6>Name : {{ $item->name }} </h6>
                     <h6>Email : {{ $item->email }}</h6>
+                    <h6>Description : {{ $item->description }}</h6>
                     <p class="pb-3">{{ $item->post_code }}</p>
                     <div class="comment-button">
                         <button> <img src="/assets/images/elc/icon3.gif" alt="">{{ $item->phone }}</button>
                         @if ($item->status === 'replied')
-                            <button> Assaigned to You</button>
+                            <button> Assigned to You</button>
                         @endif
                         @if ($item->status === 'complete')
                             <button> Completed</button>

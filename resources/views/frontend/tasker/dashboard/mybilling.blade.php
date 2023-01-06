@@ -271,7 +271,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-        const stripe = Stripe('{{ config('STRIPE_KEY') }}');
+        const stripe = Stripe('{{ env('STRIPE_KEY') }}');
         const elements = stripe.elements();
         const cardElement = elements.create('card', {
             hidePostalCode: true

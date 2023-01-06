@@ -482,7 +482,8 @@
                             <ul class="list-group py-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     Trading address verified
-                                    @if (isset($company->business_registration_number))
+                                    {{-- @if (isset($company->business_registration_number)) --}}
+                                    @if ($company->verified)
                                         <i class="fas fa-check-circle text-success fs-5"></i>
                                     @else
                                         <i class="fas fa-times-circle text-danger fs-5"></i>

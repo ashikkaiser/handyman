@@ -388,6 +388,7 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Job Deleted Successfully');
         }
         if ($type === 'complete') {
+            $job->status = 'completed';
             $job->save();
             $jobCompleteMail = [
                 'user' => $job->company->user,
